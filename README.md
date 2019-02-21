@@ -16,139 +16,84 @@
 
 - [ ] 项目构建、框架选择
 - [ ] 数据库建表
+- [ ] 对象设计
+- [ ] 页面设计
 
 ### 域名
 
-- [ ] 对象设计
-- [ ] 页面设计
 - [ ] 地址解析
+
+### 页面
+
+- [ ] 模板组合
+- [ ] 预览
+- [ ] 发布
 
 ### 模板
 
-- [ ] 对象设计
-- [ ] 页面设计
 - [ ] 注册表单
 - [ ] 文案信息（TDK、版权信息）
 - [ ] 弹框
 - [ ] 按钮
 - [ ] 图片（背景图）
 
-### 页面
-
-- [ ] 对象设计
-- [ ] 页面设计
-- [ ] 模板组装
-- [ ] 预览
-- [ ] 发布
-
 ## 设想&方案
-
-### 对象设计
-
-Website 网站
-
-| 属性    | 说明 | 举例          |
-| ------- | ---- | ------------- |
-| id      | -    | -             |
-| desc    | 站名 | 财富牛        |
-| domain  | 域名 | www.cfniu.com |
-| brand   | 品牌 | 九牛          |
-| deleted | 删除 | true          |
-
-Page 页面
-
-| 属性          | 说明     | 举例          |
-| ------------- | -------- | ------------- |
-| id            | -        | -             |
-| name          | 页面名称 | 元宵节活动页  |
-| code          | 编码     | QWERTTY       |
-| suffix        | 后缀     | html          |
-| url           | 地址     | /QWERTTY.html |
-| jsPath        | -        | -             |
-| cssPath       | -        | -             |
-| templateMixId | -        | -             |
-| device        | 端       | -             |
-| deleted       | 删除     | true          |
-
-Template 模板
-
-| 属性    | 说明   | 举例     |
-| ------- | ------ | -------- |
-| id      | -      | -        |
-| name    | 模板名 | 注册表单 |
-| styleId | -      | -        |
-
-Element 元素
-
-| 属性       | 说明                       | 举例 |
-| ---------- | -------------------------- | ---- |
-| id         | -                          | -    |
-| type       | 按钮、背景图、图片、输入框 | -    |
-| styleCssId | -                          | -    |
-
-TemplateMix 模板组合
-
-| 属性       | 说明 | 举例 |
-| ---------- | ---- | ---- |
-| id         | -    | -    |
-| pageId     | -    | -    |
-| templateId | -    | -    |
-
-AddressRouter 地址解析
-
-| 属性      | 说明    | 举例 |
-| --------- | ------- | ---- |
-| id        | -       | -    |
-| websiteId | 网站 id | -    |
-| pageId    | 页面 id | -    |
-| stoped    | 停用    | true |
-| deleted   | 删除    | true |
-
-StyleCss 样式
-
-| 属性            | 说明   | 举例 |
-| --------------- | ------ | ---- |
-| id              | -      | -    |
-| isReact         | 响应式 | -    |
-| height          | -      | -    |
-| width           | -      | -    |
-| color           | -      | -    |
-| fontSize        | -      | -    |
-| fontBold        | -      | -    |
-| background      | -      | -    |
-| backgroundColor | -      | -    |
-| backgroundImage | -      | -    |
-| border          | -      | -    |
-| borderColor     | -      | -    |
-| borderType      | -      | -    |
-| left            | -      | -    |
-| right           | -      | -    |
-| top             | -      | -    |
-| bottom          | -      | -    |
-| position        | -      | -    |
 
 ### 地址解析
 
-先通过云解析，将所以业务域名解析到固定 IP
+先通过云解析，将所以 **业务域名** 解析到固定 IP 上。根据约定的 **页面映射关系** 进行解析处理。
 
-**地址解析** 根据已经生成好的 **域名与地址映射关系.json** 进行解析
+服务端接入流程：
 
-1. 访问 www.little9niu.com/QWERTTY.html，通过解析得到：
+1. 访问 http://www.abc.com/QWERTTY.html，通过解析得到：
 
-   - domain: www.little9niu.com
-   - url: /20190220/ABCDEF.html
+   - domain: www.abc.com
+   - path: /20190220/ABCDEF.html
 
-2. 得到 AddressRouter 判断解析的状态；同时拿到 Page
-3. 根据 Page ，加载资源文件，渲染页面
+2. 判断地址映射关系 AddressMapper 状态
+3. 拿到具体页面 Page 信息
+4. 加载对应资源文件，渲染页面
 
-### 模板
+### 通用模板
 
-1. 元素定义
-2. 公用模板
-3. 模板功能
+大到支撑整个页面，小到某个具体元素（按钮，文字）
 
-### 页面
+每个模板可设置 js 功能
 
-1. 多端定义
-2. 预览
-3. 发布
+按照历史“经验”，大致模板分为：
+
+| 模板     | 说明     | 类型   |
+| -------- | -------- | ------ |
+| 顶部广告 | -        | image  |
+| 内容区   | 页面主体 | image  |
+| 底部版权 | -        | text   |
+| 锚点定位 | -        | button |
+| app 下载 | -        | button |
+| 注册表单 | 注册     | mix    |
+| 协议     | -        | mix    |
+| 弹框     | -        | mix    |
+
+### 模板结构
+
+```js
+[
+	{
+		id: 1,
+		name: '协议',
+		active: true,
+		style: {
+			element: {
+				name: 'div'
+			}
+		}
+	}
+];
+```
+
+### 页面构成
+
+每个 Page 目前 **有且只有一个** Template 模板（包含页面所有展示内容）
+
+通过 Page 的 **预览/发布** 操作生成 html、js、css、image、fonts 资源文件
+
+### 预览/发布
