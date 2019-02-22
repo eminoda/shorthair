@@ -51,8 +51,7 @@
    - path: /20190220/ABCDEF.html
 
 2. 判断地址映射关系 AddressMapper 状态
-3. 拿到具体页面 Page 信息
-4. 加载对应资源文件，渲染页面
+3. 拿到 Page，并加载对应资源文件，渲染页面
 
 ### 通用模板
 
@@ -60,32 +59,58 @@
 
 每个模板可设置 js 功能
 
-按照历史“经验”，大致模板分为：
+按照历史“经验”，大致页面模板分为：
 
-| 模板     | 说明     | 类型   |
-| -------- | -------- | ------ |
-| 顶部广告 | -        | image  |
-| 内容区   | 页面主体 | image  |
-| 底部版权 | -        | text   |
-| 锚点定位 | -        | button |
-| app 下载 | -        | button |
-| 注册表单 | 注册     | mix    |
-| 协议     | -        | mix    |
-| 弹框     | -        | mix    |
+| 模板      | 说明 |
+| --------- | ---- |
+| h5 注册页 | -    |
+| pc 注册页 | -    |
+| app 下载  | -    |
 
 ### 模板结构
 
 ```js
 [
 	{
-		id: 1,
-		name: '协议',
-		active: true,
-		style: {
-			element: {
-				name: 'div'
+		nodes: [
+			{
+				element: {
+					tag: 'div',
+					attribs: {
+						class: 'signup-modal-wrap'
+					}
+				},
+				style: {
+					color: 'red'
+				},
+				nodes: [
+					{
+						element: {
+							tag: 'li',
+							attribs: {
+								class: 'shouji'
+							}
+						},
+						style: {
+							color: 'green'
+						},
+						nodes: [{}]
+					},
+					{
+						element: {
+							tag: 'li',
+							attribs: {
+								class: 'shouji'
+							}
+						},
+						style: {
+							color: 'green'
+						},
+						nodes: [{}]
+					}
+				]
 			}
-		}
+		]
 	}
 ];
 ```
@@ -94,6 +119,16 @@
 
 每个 Page 目前 **有且只有一个** Template 模板（包含页面所有展示内容）
 
-通过 Page 的 **预览/发布** 操作生成 html、js、css、image、fonts 资源文件
+加载资源文件 **资源文件**
 
 ### 预览/发布
+
+1. 预览（**管理界面** 中展示模板）
+
+pageId -> templateId -> 遍历 Templates 集合 -> 内联样式到标签 -> 投到管理界面中进行预览
+
+2. 发布 （**客户端** 展示）
+
+pageId -> Page -> buildRecordId -> sourceFile -> 得到所需资源的引用文件
+
+3. 同步设置 （管理界面 View 和 Model 交互）

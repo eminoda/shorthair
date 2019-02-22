@@ -12,16 +12,18 @@ Website 网站
 
 Page 页面
 
-| 属性       | 说明     | 举例         |
-| ---------- | -------- | ------------ |
-| id         | -        | -            |
-| name       | 页面名称 | 元宵节活动页 |
-| code       | 编码     | QWERTTY      |
-| device     | 端       | -            |
-| tdk        | -        | -            |
-| createDate | -        | -            |
-| updateDate | -        | -            |
-| deleted    | 删除     | true         |
+| 属性          | 说明     | 举例         |
+| ------------- | -------- | ------------ |
+| id            | -        | -            |
+| name          | 页面名称 | 元宵节活动页 |
+| code          | 编码     | QWERTTY      |
+| device        | 端       | -            |
+| tdk           | -        | -            |
+| createDate    | -        | -            |
+| updateDate    | -        | -            |
+| deleted       | 删除     | true         |
+| buildRecordId |          |              |
+| templateId    |          |              |
 
 AddressMapper 地址解析
 
@@ -34,48 +36,48 @@ AddressMapper 地址解析
 
 SourceFile 资源文件
 
+Page:SourceFile = 1:m
+
 | 属性          | 说明        | 举例       |
 | ------------- | ----------- | ---------- |
 | id            | -           | -          |
 | fileName      | 文件名      | QWERTTY.js |
 | type          | css js html | -          |
 | buildRecordId | -           | -          |
+| deleted       | 删除        | true       |
 
 BuildRecord 页面构建记录
 
-| 属性       | 说明     | 举例 |
-| ---------- | -------- | ---- |
-| id         | -        | -    |
-| pageId     | -        | -    |
-| active     | 启用状态 | -    |
-| createDate | -        | -    |
+| 属性       | 说明 | 举例 |
+| ---------- | ---- | ---- |
+| id         | -    | -    |
+| pageId     | -    | -    |
+| templateId | -    | -    |
+| createDate | -    | -    |
 
 Template 模板
 
-| 属性          | 说明     | 举例     |
-| ------------- | -------- | -------- |
-| id            | -        | -        |
-| associationId | 元素集合 |          |
-| name          | 模板名   | 注册表单 |
-| active        | 启用状态 |          |
-| deleted       | 删除     | true     |
-
-Association 组合
-
-| 属性            | 说明   | 举例 |
-| --------------- | ------ | ---- |
-| id              | -      | -    |
-| templateId      | -      | -    |
-| childTemplateId | 子模板 | -    |
-| styleId         | -      | -    |
+| 属性      | 说明     | 举例 |
+| --------- | -------- | ---- |
+| id        | -        | -    |
+| name      | -        | -    |
+| root      | 顶级     | -    |
+| parent    | -        | -    |
+| child     | -        | -    |
+| styleId   | -        | -    |
+| elementId | -        | -    |
+| active    | 启用状态 | -    |
+| deleted   | 删除     | true |
 
 Element 元素
 
-| 属性 | 说明   | 举例 |
-| ---- | ------ | ---- |
-| id   | -      | -    |
-| name | 元素名 | -    |
-| tag  | 标签   | div  |
+| 属性    | 说明   | 举例 |
+| ------- | ------ | ---- |
+| id      | -      | -    |
+| name    | 元素名 | -    |
+| tag     | 标签   | div  |
+| attribs | -      | -    |
+| title   | -      | -    |
 
 StyleTable 样式
 
