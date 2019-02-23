@@ -1,0 +1,73 @@
+.register-wrap {
+  color: #333;
+  font-size: 14px;
+  .title {
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 15px;
+  }
+  .form-wrap {
+    margin: auto auto;
+    background: #fb7a21;
+    width: 80%;
+    padding: 10px;
+    .form-group {
+      width: 100%;
+      position: relative;
+      margin-bottom: 10px;
+      .input-group,
+      .operator {
+        display: inline-block;
+      }
+      .input-group {
+        position: relative;
+        width: 100%;
+        .icon {
+          position: absolute;
+          height: 30px;
+          line-height: 30px;
+          padding: 0 5px;
+        }
+        input {
+          box-sizing: border-box;
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+          border: none;
+          background: #fff;
+          padding-left: 20px;
+        }
+      }
+      .input-operator {
+        width: 66%;
+      }
+      .operator {
+        position: absolute;
+        right: 0;
+        width: 30%;
+        .message-btn,
+        .verifycode-img {
+          width: 100%;
+          height: 30px;
+          line-height: 30px;
+        }
+        .message-btn {
+          background: #ffd350;
+          border: none;
+        }
+      }
+    }
+    .register-button {
+      background: #ffd350;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      padding: 8px;
+      display: block;
+      color: #ce3a37;
+    }
+  }
+}
