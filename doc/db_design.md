@@ -16,7 +16,7 @@ Page 页面
 | ------------- | -------- | ------------ |
 | id            | -        | -            |
 | name          | 页面名称 | 元宵节活动页 |
-| code          | 编码     | QWERTTY      |
+| path          | 地址     |              |
 | device        | 端       | -            |
 | tdk           | -        | -            |
 | createDate    | -        | -            |
@@ -57,17 +57,21 @@ BuildRecord 页面构建记录
 
 Template 模板
 
-| 属性      | 说明     | 举例 |
-| --------- | -------- | ---- |
-| id        | -        | -    |
-| name      | -        | -    |
-| root      | 顶级     | -    |
-| parent    | -        | -    |
-| child     | -        | -    |
-| styleId   | -        | -    |
-| elementId | -        | -    |
-| active    | 启用状态 | -    |
-| deleted   | 删除     | true |
+| 属性    | 说明 | 举例 |
+| ------- | ---- | ---- |
+| id      | -    | -    |
+| name    | -    | -    |
+| nodeId  | -    | -    |
+| deleted | 删除 | true |
+
+Node 节点
+
+| 属性      | 说明 | 举例 |
+| --------- | ---- | ---- |
+| nodeId    | -    | -    |
+| childId   | -    | -    |
+| styleId   | -    | -    |
+| elementId | -    | -    |
 
 Element 元素
 

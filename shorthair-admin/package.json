@@ -1,0 +1,21 @@
+{
+  "name": "shorthair-admin",
+  "version": "1.0.0",
+  "description": "shorthair admin manager project",
+  "main": "app.js",
+  "bin": {
+    "shorthair-admin": "www.js"
+  },
+  "scripts": {
+    "start": "supervisor node ./bin/www.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "eminoda",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "koa-bodyparser": "^4.2.1",
+    "koa-compose": "^4.1.0",
+    "koa-router": "^7.4.0"
+  }
+}

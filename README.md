@@ -12,11 +12,12 @@
 
 ## TODO
 
-### 系统
+### 系统设计
 
-- [ ] 项目构建、框架选择
-- [ ] 数据库建表
+- [x] shorthair-app 项目结构
+- [ ] shorthair-admin 项目结构
 - [ ] 对象设计
+- [ ] 数据库建表
 - [ ] 页面设计
 
 ### 域名
@@ -71,47 +72,43 @@
 
 ```js
 [
-	{
-		nodes: [
-			{
-				element: {
-					tag: 'div',
-					attribs: {
-						class: 'signup-modal-wrap'
-					}
-				},
-				style: {
-					color: 'red'
-				},
-				nodes: [
-					{
-						element: {
-							tag: 'li',
-							attribs: {
-								class: 'shouji'
-							}
-						},
-						style: {
-							color: 'green'
-						},
-						nodes: [{}]
-					},
-					{
-						element: {
-							tag: 'li',
-							attribs: {
-								class: 'shouji'
-							}
-						},
-						style: {
-							color: 'green'
-						},
-						nodes: [{}]
-					}
-				]
-			}
-		]
-	}
+  {
+    element: {
+      tag: "div",
+      attribs: {
+        class: "signup-modal-wrap"
+      }
+    },
+    style: {
+      color: "red"
+    },
+    nodes: [
+      {
+        element: {
+          tag: "li",
+          attribs: {
+            class: "shouji"
+          }
+        },
+        style: {
+          color: "green"
+        },
+        nodes: [{}]
+      },
+      {
+        element: {
+          tag: "li",
+          attribs: {
+            class: "shouji"
+          }
+        },
+        style: {
+          color: "green"
+        },
+        nodes: [{}]
+      }
+    ]
+  }
 ];
 ```
 

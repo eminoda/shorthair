@@ -1,0 +1,60 @@
+[
+  {
+    "id": 123456789,
+    "nodeId": 1,
+    "name": "标题",
+    "element": {},
+    "style": {},
+    "childId": 2
+  },
+  {
+    "id": 123456789,
+    "nodeId": 2,
+    "name": "form表单",
+    "element": {},
+    "style": {},
+    "childId": 3
+  },
+  {
+    "id": 123456789,
+    "nodeId": 3,
+    "name": "input手机",
+    "element": {},
+    "style": {}
+  },
+  {
+    "id": 123456789,
+    "nodeId": 3,
+    "name": "input验证码",
+    "element": {},
+    "style": {}
+  },
+  {
+    "id": 123456789,
+    "nodeId": 3,
+    "name": "input短信",
+    "element": {},
+    "style": {}
+  },
+  {
+    "id": 123456789,
+    "nodeId": 3,
+    "name": "input密码",
+    "element": {},
+    "style": {}
+  },
+  {
+    "id": 123456789,
+    "nodeId": 1,
+    "name": "注册按钮",
+    "element": {},
+    "style": {}
+  },
+  {
+    "id": 123456789,
+    "nodeId": 1,
+    "name": "协议",
+    "element": {},
+    "style": {}
+  }
+]
