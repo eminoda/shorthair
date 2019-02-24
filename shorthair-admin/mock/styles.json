@@ -1,0 +1,95 @@
+[
+  {
+    "selector": ".register-wrap",
+    "style": { "color": "#333", "font-size": "14px" }
+  },
+  {
+    "selector": ".register-wrap .title",
+    "style": {
+      "text-align": "center",
+      "font-size": "16px",
+      "font-weight": "bold",
+      "margin-bottom": "15px"
+    }
+  },
+  {
+    "selector": ".register-wrap .form-wrap",
+    "style": {
+      "margin": "auto auto",
+      "background": "#fb7a21",
+      "width": "80%",
+      "padding": "10px"
+    }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group",
+    "style": {
+      "width": "100%",
+      "position": "relative",
+      "margin-bottom": "10px"
+    }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-group,\n      .register-wrap .form-wrap .form-group .operator",
+    "style": { "display": "inline-block" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-group",
+    "style": { "font-size": "14px" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-group",
+    "style": { "position": "relative", "width": "100%" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-group .icon",
+    "style": {
+      "position": "absolute",
+      "height": "30px",
+      "line-height": "30px",
+      "padding": "0 5px"
+    }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-group input",
+    "style": {
+      "box-sizing": "border-box",
+      "width": "100%",
+      "height": "30px",
+      "line-height": "30px",
+      "border": "none",
+      "background": "#fff",
+      "padding-left": "20px"
+    }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .input-operator",
+    "style": { "width": "66%" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .operator",
+    "style": { "position": "absolute", "right": "0", "width": "30%" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .operator .message-btn,\n        .register-wrap .form-wrap .form-group .operator .verifycode-img",
+    "style": { "width": "100%", "height": "30px", "line-height": "30px" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .form-group .operator .message-btn",
+    "style": { "background": "#ffd350", "border": "none" }
+  },
+  {
+    "selector": ".register-wrap .form-wrap .register-button",
+    "style": {
+      "background": "#ffd350",
+      "width": "100%",
+      "border": "none",
+      "border-radius": "5px",
+      "font-size": "18px",
+      "font-weight": "bold",
+      "padding": "8px",
+      "display": "block",
+      "color": "#ce3a37"
+    }
+  }
+]

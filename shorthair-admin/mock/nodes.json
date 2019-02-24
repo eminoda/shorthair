@@ -9,6 +9,14 @@
   },
   {
     "id": 123456789,
+    "nodeId": 1,
+    "name": "标题",
+    "element": {},
+    "style": {},
+    "childId": 2
+  },
+  {
+    "id": 123456789,
     "nodeId": 2,
     "name": "form表单",
     "element": {},

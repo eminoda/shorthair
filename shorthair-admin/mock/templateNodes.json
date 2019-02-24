@@ -1,0 +1,214 @@
+[
+  {
+    "tag": "DIV",
+    "className": "test",
+    "nodes": [
+      {
+        "tag": "DIV",
+        "className": "register-wrap",
+        "nodes": [
+          {
+            "tag": "DIV",
+            "className": "title",
+            "nodes": [
+              {
+                "tag": "#text",
+                "className": "",
+                "nodes": [],
+                "text": "注册标题"
+              }
+            ],
+            "text": ""
+          },
+          {
+            "tag": "DIV",
+            "className": "form-wrap",
+            "nodes": [
+              {
+                "tag": "DIV",
+                "className": "form-group",
+                "nodes": [
+                  {
+                    "tag": "DIV",
+                    "className": "input-group",
+                    "nodes": [
+                      {
+                        "tag": "SPAN",
+                        "className": "icon",
+                        "nodes": [
+                          {
+                            "tag": "#text",
+                            "className": "",
+                            "nodes": [],
+                            "text": "A"
+                          }
+                        ],
+                        "text": ""
+                      },
+                      {
+                        "tag": "INPUT",
+                        "className": "",
+                        "nodes": [],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "DIV",
+                "className": "form-group",
+                "nodes": [
+                  {
+                    "tag": "DIV",
+                    "className": "input-group input-operator",
+                    "nodes": [
+                      {
+                        "tag": "SPAN",
+                        "className": "icon",
+                        "nodes": [
+                          {
+                            "tag": "#text",
+                            "className": "",
+                            "nodes": [],
+                            "text": "A"
+                          }
+                        ],
+                        "text": ""
+                      },
+                      {
+                        "tag": "INPUT",
+                        "className": "",
+                        "nodes": [],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  },
+                  {
+                    "tag": "DIV",
+                    "className": "operator",
+                    "nodes": [
+                      {
+                        "tag": "IMG",
+                        "className": "verifycode-img",
+                        "nodes": [],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "DIV",
+                "className": "form-group",
+                "nodes": [
+                  {
+                    "tag": "DIV",
+                    "className": "input-group input-operator",
+                    "nodes": [
+                      {
+                        "tag": "SPAN",
+                        "className": "icon",
+                        "nodes": [
+                          {
+                            "tag": "#text",
+                            "className": "",
+                            "nodes": [],
+                            "text": "A"
+                          }
+                        ],
+                        "text": ""
+                      },
+                      {
+                        "tag": "INPUT",
+                        "className": "",
+                        "nodes": [],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  },
+                  {
+                    "tag": "DIV",
+                    "className": "operator",
+                    "nodes": [
+                      {
+                        "tag": "BUTTON",
+                        "className": "message-btn",
+                        "nodes": [
+                          {
+                            "tag": "#text",
+                            "className": "",
+                            "nodes": [],
+                            "text": "获取验证码"
+                          }
+                        ],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "DIV",
+                "className": "form-group",
+                "nodes": [
+                  {
+                    "tag": "DIV",
+                    "className": "input-group",
+                    "nodes": [
+                      {
+                        "tag": "SPAN",
+                        "className": "icon",
+                        "nodes": [
+                          {
+                            "tag": "#text",
+                            "className": "",
+                            "nodes": [],
+                            "text": "A"
+                          }
+                        ],
+                        "text": ""
+                      },
+                      {
+                        "tag": "INPUT",
+                        "className": "",
+                        "nodes": [],
+                        "text": ""
+                      }
+                    ],
+                    "text": ""
+                  }
+                ],
+                "text": ""
+              },
+              {
+                "tag": "BUTTON",
+                "className": "register-button",
+                "nodes": [
+                  {
+                    "tag": "#text",
+                    "className": "",
+                    "nodes": [],
+                    "text": "注册领取200元"
+                  }
+                ],
+                "text": ""
+              }
+            ],
+            "text": ""
+          }
+        ],
+        "text": ""
+      }
+    ],
+    "text": ""
+  }
+]
