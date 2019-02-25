@@ -1,17 +1,21 @@
 [
   {
+    "nodeType": 1,
     "tag": "DIV",
     "className": "test",
     "nodes": [
       {
+        "nodeType": 1,
         "tag": "DIV",
         "className": "register-wrap",
         "nodes": [
           {
+            "nodeType": 1,
             "tag": "DIV",
             "className": "title",
             "nodes": [
               {
+                "nodeType": 3,
                 "tag": "#text",
                 "className": "",
                 "nodes": [],
@@ -27,22 +31,27 @@
             }
           },
           {
+            "nodeType": 1,
             "tag": "DIV",
             "className": "form-wrap",
             "nodes": [
               {
+                "nodeType": 1,
                 "tag": "DIV",
                 "className": "form-group",
                 "nodes": [
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "input-group",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "SPAN",
                         "className": "icon",
                         "nodes": [
                           {
+                            "nodeType": 3,
                             "tag": "#text",
                             "className": "",
                             "nodes": [],
@@ -58,6 +67,7 @@
                         }
                       },
                       {
+                        "nodeType": 1,
                         "tag": "INPUT",
                         "className": "input-item",
                         "nodes": [],
@@ -89,18 +99,22 @@
                 }
               },
               {
+                "nodeType": 1,
                 "tag": "DIV",
                 "className": "form-group",
                 "nodes": [
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "input-group input-operator",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "SPAN",
                         "className": "icon",
                         "nodes": [
                           {
+                            "nodeType": 3,
                             "tag": "#text",
                             "className": "",
                             "nodes": [],
@@ -116,6 +130,7 @@
                         }
                       },
                       {
+                        "nodeType": 1,
                         "tag": "INPUT",
                         "className": "input-item",
                         "nodes": [],
@@ -139,10 +154,12 @@
                     }
                   },
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "operator",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "IMG",
                         "className": "verifycode-img",
                         "nodes": [],
@@ -171,18 +188,22 @@
                 }
               },
               {
+                "nodeType": 1,
                 "tag": "DIV",
                 "className": "form-group",
                 "nodes": [
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "input-group input-operator",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "SPAN",
                         "className": "icon",
                         "nodes": [
                           {
+                            "nodeType": 3,
                             "tag": "#text",
                             "className": "",
                             "nodes": [],
@@ -198,6 +219,7 @@
                         }
                       },
                       {
+                        "nodeType": 1,
                         "tag": "INPUT",
                         "className": "input-item",
                         "nodes": [],
@@ -221,14 +243,17 @@
                     }
                   },
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "operator",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "BUTTON",
                         "className": "message-btn",
                         "nodes": [
                           {
+                            "nodeType": 3,
                             "tag": "#text",
                             "className": "",
                             "nodes": [],
@@ -259,18 +284,22 @@
                 }
               },
               {
+                "nodeType": 1,
                 "tag": "DIV",
                 "className": "form-group",
                 "nodes": [
                   {
+                    "nodeType": 1,
                     "tag": "DIV",
                     "className": "input-group",
                     "nodes": [
                       {
+                        "nodeType": 1,
                         "tag": "SPAN",
                         "className": "icon",
                         "nodes": [
                           {
+                            "nodeType": 3,
                             "tag": "#text",
                             "className": "",
                             "nodes": [],
@@ -286,6 +315,7 @@
                         }
                       },
                       {
+                        "nodeType": 1,
                         "tag": "INPUT",
                         "className": "input-item",
                         "nodes": [],
@@ -317,10 +347,12 @@
                 }
               },
               {
+                "nodeType": 1,
                 "tag": "BUTTON",
                 "className": "register-button",
                 "nodes": [
                   {
+                    "nodeType": 3,
                     "tag": "#text",
                     "className": "",
                     "nodes": [],
