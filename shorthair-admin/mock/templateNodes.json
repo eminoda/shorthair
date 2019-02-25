@@ -18,7 +18,13 @@
                 "text": "注册标题"
               }
             ],
-            "text": ""
+            "text": "",
+            "styleTable": {
+              "text-align": "center",
+              "font-size": "16px",
+              "font-weight": "bold",
+              "margin-bottom": "15px"
+            }
           },
           {
             "tag": "DIV",
@@ -43,19 +49,44 @@
                             "text": "A"
                           }
                         ],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "position": "absolute",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "padding": "0 5px"
+                        }
                       },
                       {
                         "tag": "INPUT",
-                        "className": "",
+                        "className": "input-item",
                         "nodes": [],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "box-sizing": "border-box",
+                          "width": "100%",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "border": "none",
+                          "background": "#fff",
+                          "padding-left": "20px"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "display": "inline-block",
+                      "position": "relative",
+                      "width": "100%"
+                    }
                   }
                 ],
-                "text": ""
+                "text": "",
+                "styleTable": {
+                  "width": "100%",
+                  "position": "relative",
+                  "margin-bottom": "10px"
+                }
               },
               {
                 "tag": "DIV",
@@ -76,16 +107,36 @@
                             "text": "A"
                           }
                         ],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "position": "absolute",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "padding": "0 5px"
+                        }
                       },
                       {
                         "tag": "INPUT",
-                        "className": "",
+                        "className": "input-item",
                         "nodes": [],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "box-sizing": "border-box",
+                          "width": "100%",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "border": "none",
+                          "background": "#fff",
+                          "padding-left": "20px"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "display": "inline-block",
+                      "position": "relative",
+                      "width": "100%"
+                    }
                   },
                   {
                     "tag": "DIV",
@@ -95,13 +146,29 @@
                         "tag": "IMG",
                         "className": "verifycode-img",
                         "nodes": [],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "width": "100%",
+                          "height": "30px",
+                          "line-height": "30px"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "position": "relative",
+                      "right": "0",
+                      "width": "100%",
+                      "display": "inline-block"
+                    }
                   }
                 ],
-                "text": ""
+                "text": "",
+                "styleTable": {
+                  "width": "100%",
+                  "position": "relative",
+                  "margin-bottom": "10px"
+                }
               },
               {
                 "tag": "DIV",
@@ -122,16 +189,36 @@
                             "text": "A"
                           }
                         ],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "position": "absolute",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "padding": "0 5px"
+                        }
                       },
                       {
                         "tag": "INPUT",
-                        "className": "",
+                        "className": "input-item",
                         "nodes": [],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "box-sizing": "border-box",
+                          "width": "100%",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "border": "none",
+                          "background": "#fff",
+                          "padding-left": "20px"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "display": "inline-block",
+                      "position": "relative",
+                      "width": "100%"
+                    }
                   },
                   {
                     "tag": "DIV",
@@ -148,13 +235,28 @@
                             "text": "获取验证码"
                           }
                         ],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "background": "#ffd350",
+                          "border": "none"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "position": "relative",
+                      "right": "0",
+                      "width": "100%",
+                      "display": "inline-block"
+                    }
                   }
                 ],
-                "text": ""
+                "text": "",
+                "styleTable": {
+                  "width": "100%",
+                  "position": "relative",
+                  "margin-bottom": "10px"
+                }
               },
               {
                 "tag": "DIV",
@@ -175,19 +277,44 @@
                             "text": "A"
                           }
                         ],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "position": "absolute",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "padding": "0 5px"
+                        }
                       },
                       {
                         "tag": "INPUT",
-                        "className": "",
+                        "className": "input-item",
                         "nodes": [],
-                        "text": ""
+                        "text": "",
+                        "styleTable": {
+                          "box-sizing": "border-box",
+                          "width": "100%",
+                          "height": "30px",
+                          "line-height": "30px",
+                          "border": "none",
+                          "background": "#fff",
+                          "padding-left": "20px"
+                        }
                       }
                     ],
-                    "text": ""
+                    "text": "",
+                    "styleTable": {
+                      "display": "inline-block",
+                      "position": "relative",
+                      "width": "100%"
+                    }
                   }
                 ],
-                "text": ""
+                "text": "",
+                "styleTable": {
+                  "width": "100%",
+                  "position": "relative",
+                  "margin-bottom": "10px"
+                }
               },
               {
                 "tag": "BUTTON",
@@ -200,13 +327,34 @@
                     "text": "注册领取200元"
                   }
                 ],
-                "text": ""
+                "text": "",
+                "styleTable": {
+                  "background": "#ffd350",
+                  "width": "100%",
+                  "border": "none",
+                  "border-radius": "5px",
+                  "font-size": "18px",
+                  "font-weight": "bold",
+                  "padding": "8px",
+                  "display": "block",
+                  "color": "#ce3a37"
+                }
               }
             ],
-            "text": ""
+            "text": "",
+            "styleTable": {
+              "margin": "auto auto",
+              "background": "#fb7a21",
+              "width": "80%",
+              "padding": "10px"
+            }
           }
         ],
-        "text": ""
+        "text": "",
+        "styleTable": {
+          "color": "#333",
+          "font-size": "14px"
+        }
       }
     ],
     "text": ""
