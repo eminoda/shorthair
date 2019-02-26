@@ -23,6 +23,9 @@
               }
             ],
             "text": "",
+            "attribute": {
+              "class": "title"
+            },
             "styleTable": {
               "text-align": "center",
               "font-size": "16px",
@@ -59,6 +62,9 @@
                           }
                         ],
                         "text": "",
+                        "attribute": {
+                          "class": "icon"
+                        },
                         "styleTable": {
                           "position": "absolute",
                           "height": "30px",
@@ -72,6 +78,11 @@
                         "className": "input-item",
                         "nodes": [],
                         "text": "",
+                        "attribute": {
+                          "class": "input-item",
+                          "type": "text",
+                          "placeholder": "请输入11位手机号码"
+                        },
                         "styleTable": {
                           "box-sizing": "border-box",
                           "width": "100%",
@@ -84,6 +95,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "input-group"
+                    },
                     "styleTable": {
                       "display": "inline-block",
                       "position": "relative",
@@ -92,6 +106,9 @@
                   }
                 ],
                 "text": "",
+                "attribute": {
+                  "class": "form-group"
+                },
                 "styleTable": {
                   "width": "100%",
                   "position": "relative",
@@ -122,6 +139,9 @@
                           }
                         ],
                         "text": "",
+                        "attribute": {
+                          "class": "icon"
+                        },
                         "styleTable": {
                           "position": "absolute",
                           "height": "30px",
@@ -135,6 +155,11 @@
                         "className": "input-item",
                         "nodes": [],
                         "text": "",
+                        "attribute": {
+                          "class": "input-item",
+                          "type": "text",
+                          "placeholder": "请输入11位手机号码"
+                        },
                         "styleTable": {
                           "box-sizing": "border-box",
                           "width": "100%",
@@ -147,6 +172,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "input-group input-operator"
+                    },
                     "styleTable": {
                       "display": "inline-block",
                       "position": "relative",
@@ -164,6 +192,11 @@
                         "className": "verifycode-img",
                         "nodes": [],
                         "text": "",
+                        "attribute": {
+                          "class": "verifycode-img",
+                          "src": "http://bg.niu100.com/verifyCode.api",
+                          "alt": ""
+                        },
                         "styleTable": {
                           "width": "100%",
                           "height": "30px",
@@ -172,6 +205,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "operator"
+                    },
                     "styleTable": {
                       "position": "relative",
                       "right": "0",
@@ -181,6 +217,9 @@
                   }
                 ],
                 "text": "",
+                "attribute": {
+                  "class": "form-group"
+                },
                 "styleTable": {
                   "width": "100%",
                   "position": "relative",
@@ -211,6 +250,9 @@
                           }
                         ],
                         "text": "",
+                        "attribute": {
+                          "class": "icon"
+                        },
                         "styleTable": {
                           "position": "absolute",
                           "height": "30px",
@@ -224,6 +266,11 @@
                         "className": "input-item",
                         "nodes": [],
                         "text": "",
+                        "attribute": {
+                          "class": "input-item",
+                          "type": "text",
+                          "placeholder": "请输入11位手机号码"
+                        },
                         "styleTable": {
                           "box-sizing": "border-box",
                           "width": "100%",
@@ -236,6 +283,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "input-group input-operator"
+                    },
                     "styleTable": {
                       "display": "inline-block",
                       "position": "relative",
@@ -261,6 +311,9 @@
                           }
                         ],
                         "text": "",
+                        "attribute": {
+                          "class": "message-btn"
+                        },
                         "styleTable": {
                           "background": "#ffd350",
                           "border": "none"
@@ -268,6 +321,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "operator"
+                    },
                     "styleTable": {
                       "position": "relative",
                       "right": "0",
@@ -277,6 +333,9 @@
                   }
                 ],
                 "text": "",
+                "attribute": {
+                  "class": "form-group"
+                },
                 "styleTable": {
                   "width": "100%",
                   "position": "relative",
@@ -307,6 +366,9 @@
                           }
                         ],
                         "text": "",
+                        "attribute": {
+                          "class": "icon"
+                        },
                         "styleTable": {
                           "position": "absolute",
                           "height": "30px",
@@ -320,6 +382,11 @@
                         "className": "input-item",
                         "nodes": [],
                         "text": "",
+                        "attribute": {
+                          "class": "input-item",
+                          "type": "text",
+                          "placeholder": "请输入11位手机号码"
+                        },
                         "styleTable": {
                           "box-sizing": "border-box",
                           "width": "100%",
@@ -332,6 +399,9 @@
                       }
                     ],
                     "text": "",
+                    "attribute": {
+                      "class": "input-group"
+                    },
                     "styleTable": {
                       "display": "inline-block",
                       "position": "relative",
@@ -340,6 +410,9 @@
                   }
                 ],
                 "text": "",
+                "attribute": {
+                  "class": "form-group"
+                },
                 "styleTable": {
                   "width": "100%",
                   "position": "relative",
@@ -360,6 +433,9 @@
                   }
                 ],
                 "text": "",
+                "attribute": {
+                  "class": "register-button"
+                },
                 "styleTable": {
                   "background": "#ffd350",
                   "width": "100%",
@@ -374,6 +450,9 @@
               }
             ],
             "text": "",
+            "attribute": {
+              "class": "form-wrap"
+            },
             "styleTable": {
               "margin": "auto auto",
               "background": "#fb7a21",
@@ -383,12 +462,19 @@
           }
         ],
         "text": "",
+        "attribute": {
+          "class": "register-wrap"
+        },
         "styleTable": {
           "color": "#333",
           "font-size": "14px"
         }
       }
     ],
-    "text": ""
+    "text": "",
+    "attribute": {
+      "class": "test",
+      "test": "test"
+    }
   }
 ]

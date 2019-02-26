@@ -18,7 +18,10 @@ function generateELementNodes(element, templateNodes) {
 		for (let node of templateNodes) {
 			if (node.nodeType == 1) {
 				let childElement = document.createElement(node.tag.toLocaleLowerCase());
-				childElement.className = node.className;
+				for (let attr in node.attribute) {
+					childElement.setAttribute(attr, node.attribute[attr]);
+				}
+				// childElement.className = node.className;
 				generateELementNodes(childElement, node.nodes);
 				element.appendChild(childElement);
 			}
