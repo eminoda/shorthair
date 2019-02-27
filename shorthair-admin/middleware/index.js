@@ -1,8 +1,7 @@
-const compose = require("koa-compose");
-const assets = require("koa-static");
-const bodyParser = require("koa-bodyparser");
-const path = require("path");
-const router = require("../router");
+const path = require('path');
+const compose = require('koa-compose');
+const static = require('koa-static');
+const bodyParser = require('koa-bodyparser');
+const mockPath = path.join(__dirname, '../mock/template');
 
-const assetsPath = path.join(__dirname, "../mock/template");
-module.exports = compose([assets(assetsPath), bodyParser(), router]);
+module.exports = compose([static(mockPath), bodyParser()]);
