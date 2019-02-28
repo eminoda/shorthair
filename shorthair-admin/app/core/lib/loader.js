@@ -28,7 +28,10 @@ class Loader {
 		// app 加载 router.js
 		// 运行 app，调用 router，判断 Router
 		// 创建 Router 预设所有http method 定义，加入中间件 routes()
-		this.router = this.loadFile(path.join(this.baseDir, 'router'));
+		this.router = this.loadFile(
+			this.resolveModule(path.join(this.baseDir, 'app/router'))
+		);
+		debug(this.router);
 	}
 	_preLoadAppConfig() {
 		const names = ['config.default', `config.${this.serverEnv}`];

@@ -4,4 +4,5 @@ module.exports = app => {
 	router.get('/template', async (ctx, next) => {
 		ctx.body = 123;
 	});
+	return true;
 };
