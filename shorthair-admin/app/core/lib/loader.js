@@ -3,13 +3,16 @@ const fs = require('fs');
 const path = require('path');
 const extend = require('extend2');
 const is = require('is-type-of');
-
+const globby = require('globby');
+const FileLoader = require('./fileLoader');
 class Loader {
 	constructor(options = {}) {
 		this.baseDir = options.baseDir;
 		this.serverEnv = this.getServerEnv();
 		this.app = options.app;
+		this.timing = this.app.timing;
 		this.loadConfig();
+		this.loadController();
 		this.loadRouter();
 	}
 	getServerEnv() {
@@ -31,7 +34,6 @@ class Loader {
 		this.router = this.loadFile(
 			this.resolveModule(path.join(this.baseDir, 'app/router'))
 		);
-		debug(this.router);
 	}
 	_preLoadAppConfig() {
 		const names = ['config.default', `config.${this.serverEnv}`];
@@ -68,6 +70,58 @@ class Loader {
 			return undefined;
 		}
 		return fullPath;
+	}
+	loadController(opt) {
+		const timingKey = 'Load Controll';
+		this.timing.start(timingKey);
+		opt = Object.assign(
+			{
+				directory: path.join(this.baseDir, 'app/controller'),
+				initializer: (obj, opt) => {
+					if (is.class(obj)) {
+						return this.wrapObject(obj, opt.path);
+					} else {
+						// TODO: 其他类型，虽然 class 为主
+						return {};
+					}
+				}
+			},
+			opt
+		);
+		let controllerBase = opt.directory;
+		this.loadToApp(controllerBase, 'controller', opt);
+		this.timing.end(timingKey);
+	}
+	wrapObject(Controller) {
+		let proto = Controller.prototype;
+		const ret = {};
+		const keys = Object.getOwnPropertyNames(proto);
+		for (const key of keys) {
+			if (key === 'constructor') {
+				continue;
+			}
+			const d = Object.getOwnPropertyDescriptor(proto, key);
+			if (is.function(d.value)) {
+				const controller = new Controller(this);
+				ret[key] = controller[key];
+			}
+		}
+		// proto = Object.getPrototypeOf(proto);
+		return ret;
+	}
+	// app.controller = {}
+	loadToApp(directory, property, opt) {
+		const target = (this.app[property] = {});
+		opt = Object.assign(
+			{},
+			{
+				directory,
+				target,
+				inject: this.app
+			},
+			opt
+		);
+		new FileLoader(opt).load();
 	}
 }
 

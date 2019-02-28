@@ -16,7 +16,6 @@ class Router extends KoaRouter {
 		methods.concat(['all']).forEach(method => {
 			this[method] = (...args) => {
 				const splited = spliteAndResolveRouterParams({ args, app: this.app });
-				debug(splited);
 				// format and rebuild params
 				args = splited.prefix.concat(splited.middlewares);
 				return super[method](...args);

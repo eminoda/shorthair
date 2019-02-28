@@ -1,33 +1,34 @@
 {
-  "name": "shorthair-admin",
-  "version": "1.0.0",
-  "description": "shorthair admin manager project",
-  "main": "app.js",
-  "bin": {
-    "shorthair-admin": "www.js"
-  },
-  "scripts": {
-    "start": "set DEBUG=*,-koa* & set NODE_ENV=development &supervisor -i ./node_modules node ./bin/www.js ",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "eminoda",
-  "license": "MIT",
-  "dependencies": {
-    "debug": "^4.1.1",
-    "extend2": "^1.0.0",
-    "is-type-of": "^1.2.1",
-    "jsdom": "^13.2.0",
-    "koa": "^2.7.0",
-    "koa-bodyparser": "^4.2.1",
-    "koa-compose": "^4.1.0",
-    "koa-router": "^7.4.0",
-    "koa-static": "^5.0.0",
-    "mongoose": "^5.4.16",
-    "yargs": "^13.2.1"
-  },
-  "devDependencies": {
-    "cssom": "^0.3.6",
-    "gulp": "^4.0.0",
-    "gulp-sass": "^4.0.2"
-  }
+	"name": "shorthair-admin",
+	"version": "1.0.0",
+	"description": "shorthair admin manager project",
+	"main": "app.js",
+	"bin": {
+		"shorthair-admin": "www.js"
+	},
+	"scripts": {
+		"start": "set DEBUG=*,-koa*,-snapdragon* & set NODE_ENV=development &supervisor -i ./node_modules node ./bin/www.js ",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"author": "eminoda",
+	"license": "MIT",
+	"dependencies": {
+		"debug": "^4.1.1",
+		"extend2": "^1.0.0",
+		"globby": "^9.0.0",
+		"is-type-of": "^1.2.1",
+		"jsdom": "^13.2.0",
+		"koa": "^2.7.0",
+		"koa-bodyparser": "^4.2.1",
+		"koa-compose": "^4.1.0",
+		"koa-router": "^7.4.0",
+		"koa-static": "^5.0.0",
+		"mongoose": "^5.4.16",
+		"yargs": "^13.2.1"
+	},
+	"devDependencies": {
+		"cssom": "^0.3.6",
+		"gulp": "^4.0.0",
+		"gulp-sass": "^4.0.2"
+	}
 }
