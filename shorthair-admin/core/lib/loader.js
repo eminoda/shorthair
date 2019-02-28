@@ -6,9 +6,10 @@ const extend = require('extend2');
 class Loader {
 	constructor(options = {}) {
 		this.baseDir = options.baseDir;
-		this.app = options.app;
 		this.serverEnv = this.getServerEnv();
+		this.app = options.app;
 		this.loadConfig();
+		this.loadRouter();
 	}
 	getServerEnv() {
 		let serverEnv = 'local';
@@ -20,9 +21,29 @@ class Loader {
 		return serverEnv;
 	}
 	loadConfig() {
-		this.app.config = this._preLoadAppConfig();
-		debug('app.config', this.app.config);
+		this.config = this._preLoadAppConfig();
 	}
+	loadRouter() {
+		// app 加载 router.js
+		// 运行 app，调用 router，判断 Router
+		// 创建 Router 预设所有http method 定义，加入中间件 routes()
+		this.router = this.loadFile(this.baseDir, 'index', 'router');
+	}
+
+	_preLoadAppConfig() {
+		const names = ['config.default', `config.${this.serverEnv}`];
+		const target = {};
+		for (const filename of names) {
+			const config = this.loadFile(this.baseDir, filename, 'config');
+			extend(true, target, config);
+		}
+		return target;
+	}
+	loadFile(dirpath, filename, type) {
+		const filepath = this.resolveModule(path.join(dirpath, type, filename));
+		return this.requireFile(filepath);
+	}
+	// TODO: 解析模块，而非单纯 cmd js
 	resolveModule(filepath) {
 		let fullPath;
 		try {
@@ -32,23 +53,8 @@ class Loader {
 		}
 		return fullPath;
 	}
-	_preLoadAppConfig() {
-		const names = ['config.default', `config.${this.serverEnv}`];
-		const target = {};
-		for (const filename of names) {
-			let filepath = this.resolveModule(
-				path.join(this.baseDir, 'config', filename)
-			);
-			const config = this._getConfig(filepath);
-			extend(true, target, config);
-		}
-		return target;
-	}
-	_getConfig(filepath) {
-		if (filepath) {
-			return require(filepath);
-		}
-		return null;
+	requireFile(filepath) {
+		return fs.existsSync(filepath) ? require(filepath) : null;
 	}
 }
 

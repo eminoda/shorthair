@@ -1,7 +1,7 @@
 const Koa = require('koa');
 const debug = require('debug')('application');
 const Loader = require('./lib/loader');
-const Router = require('koa-router');
+const Router = require('./lib/router');
 
 class Application extends Koa {
 	constructor(options = {}) {
@@ -12,6 +12,9 @@ class Application extends Koa {
 			baseDir: this.baseDir,
 			app: this
 		});
+		debug('config', this.loader.config);
+		debug('router', this.loader.router);
+		// this.use(new Router().route());
 	}
 	get router() {
 		debug('123');

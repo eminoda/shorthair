@@ -4,7 +4,7 @@ const app = new Application();
 const middleware = require('./middleware');
 // const router = require('./router');
 
-console.log(app.router);
+// console.log(app.router);
 app.use(middleware);
 // app.use(router);
 
