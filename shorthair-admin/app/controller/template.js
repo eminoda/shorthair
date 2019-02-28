@@ -1,5 +1,5 @@
 class TemplateController {
-	async show(ctx, next) {
+	async show() {
 		this.ctx.body = 123;
 	}
 }
