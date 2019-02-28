@@ -12,18 +12,18 @@ Website 网站
 
 Page 页面
 
-| 属性          | 说明     | 举例         |
-| ------------- | -------- | ------------ |
-| id            | -        | -            |
-| name          | 页面名称 | 元宵节活动页 |
-| path          | 地址     |              |
-| device        | 端       | -            |
-| tdk           | -        | -            |
-| createDate    | -        | -            |
-| updateDate    | -        | -            |
-| deleted       | 删除     | true         |
-| buildRecordId |          |              |
-| templateId    |          |              |
+| 属性       | 说明     | 举例         |
+| ---------- | -------- | ------------ |
+| id         | -        | -            |
+| name       | 页面名称 | 元宵节活动页 |
+| path       | 地址     |              |
+| device     | 端       | -            |
+| tdk        | -        | -            |
+| createDate | -        | -            |
+| updateDate | -        | -            |
+| deleted    | 删除     | true         |
+| buildId    |          |              |
+| templateId |          |              |
 
 AddressMapper 地址解析
 
@@ -38,15 +38,16 @@ SourceFile 资源文件
 
 Page:SourceFile = 1:m
 
-| 属性          | 说明        | 举例       |
-| ------------- | ----------- | ---------- |
-| id            | -           | -          |
-| fileName      | 文件名      | QWERTTY.js |
-| type          | css js html | -          |
-| buildRecordId | -           | -          |
-| deleted       | 删除        | true       |
+| 属性     | 说明        | 举例                   |
+| -------- | ----------- | ---------------------- |
+| id       | -           | -                      |
+| fileName | 文件名      | sourceId.js            |
+| type     | css js html | -                      |
+| path     | -           | /:buildId/:sourceId.js |
+| buildId  | -           | -                      |
+| deleted  | 删除        | true                   |
 
-BuildRecord 页面构建记录
+Build 页面构建记录
 
 | 属性       | 说明 | 举例 |
 | ---------- | ---- | ---- |
