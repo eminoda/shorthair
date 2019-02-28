@@ -2,6 +2,7 @@ const debug = require('debug')('loader');
 const fs = require('fs');
 const path = require('path');
 const extend = require('extend2');
+const is = require('is-type-of');
 
 class Loader {
 	constructor(options = {}) {
@@ -27,21 +28,33 @@ class Loader {
 		// app 加载 router.js
 		// 运行 app，调用 router，判断 Router
 		// 创建 Router 预设所有http method 定义，加入中间件 routes()
-		this.router = this.loadFile(this.baseDir, 'index', 'router');
+		this.router = this.loadFile(path.join(this.baseDir, 'router'));
 	}
-
 	_preLoadAppConfig() {
 		const names = ['config.default', `config.${this.serverEnv}`];
 		const target = {};
 		for (const filename of names) {
-			const config = this.loadFile(this.baseDir, filename, 'config');
+			const config = this._loadConfig(filename);
 			extend(true, target, config);
 		}
 		return target;
 	}
-	loadFile(dirpath, filename, type) {
-		const filepath = this.resolveModule(path.join(dirpath, type, filename));
-		return this.requireFile(filepath);
+	_loadConfig(filename) {
+		const filepath = this.resolveModule(
+			path.join(this.baseDir, 'config', filename)
+		);
+		return this.loadFile(filepath);
+	}
+	loadFile(filepath, ...inject) {
+		if (!filepath || !fs.existsSync(filepath)) {
+			return null;
+		}
+		if (inject.length === 0) inject = [this.app];
+		let ret = require(filepath);
+		if (is.function(ret) && !is.class(ret)) {
+			ret = ret(...inject);
+		}
+		return ret;
 	}
 	// TODO: 解析模块，而非单纯 cmd js
 	resolveModule(filepath) {
@@ -52,9 +65,6 @@ class Loader {
 			return undefined;
 		}
 		return fullPath;
-	}
-	requireFile(filepath) {
-		return fs.existsSync(filepath) ? require(filepath) : null;
 	}
 }
 

@@ -2,7 +2,7 @@ const Koa = require('koa');
 const debug = require('debug')('application');
 const Loader = require('./lib/loader');
 const Router = require('./lib/router');
-
+const ROUTER = Symbol('app#router'); // unique
 class Application extends Koa {
 	constructor(options = {}) {
 		super();
@@ -13,12 +13,14 @@ class Application extends Koa {
 			app: this
 		});
 		debug('config', this.loader.config);
-		debug('router', this.loader.router);
-		// this.use(new Router().route());
 	}
 	get router() {
-		debug('123');
-		return 123;
+		if (this[ROUTER]) {
+			return this[ROUTER];
+		}
+		const router = (this[ROUTER] = new Router({}, this));
+		this.use(router.middleware());
+		return router;
 	}
 }
 module.exports = Application;
