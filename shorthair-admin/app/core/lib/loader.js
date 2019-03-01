@@ -5,8 +5,10 @@ const extend = require('extend2');
 const is = require('is-type-of');
 const globby = require('globby');
 const FileLoader = require('./fileLoader');
+const utils = require('./utils');
 class Loader {
 	constructor(options = {}) {
+		this.name = 'Loader';
 		this.baseDir = options.baseDir;
 		this.serverEnv = this.getServerEnv();
 		this.app = options.app;
@@ -31,9 +33,7 @@ class Loader {
 		// app 加载 router.js
 		// 运行 app，调用 router，判断 Router
 		// 创建 Router 预设所有http method 定义，加入中间件 routes()
-		this.router = this.loadFile(
-			this.resolveModule(path.join(this.baseDir, 'app/router'))
-		);
+		this.router = this.loadFile(this.resolveModule(path.join(this.baseDir, 'app/router')));
 	}
 	_preLoadAppConfig() {
 		const names = ['config.default', `config.${this.serverEnv}`];
@@ -45,9 +45,7 @@ class Loader {
 		return target;
 	}
 	_loadConfig(filename) {
-		const filepath = this.resolveModule(
-			path.join(this.baseDir, 'config', filename)
-		);
+		const filepath = this.resolveModule(path.join(this.baseDir, 'config', filename));
 		return this.loadFile(filepath);
 	}
 	loadFile(filepath, ...inject) {
@@ -103,15 +101,16 @@ class Loader {
 			}
 			const d = Object.getOwnPropertyDescriptor(proto, key);
 			if (is.function(d.value)) {
-				ret[key] = async (ctx, next) => {
+				ret[key] = function(...args) {
 					const controller = new Controller(this);
-					return await controller[key].call(this, ctx, next);
+					return utils.callFn(controller[key], args, controller);
 				};
 			}
 		}
 		// proto = Object.getPrototypeOf(proto);
 		return ret;
 	}
+
 	// app.controller = {}
 	loadToApp(directory, property, opt) {
 		const target = (this.app[property] = {});

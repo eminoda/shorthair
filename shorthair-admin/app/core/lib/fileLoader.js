@@ -14,11 +14,11 @@ class FileLoader {
 		const target = this.options.target; // app.controller
 		for (const item of items) {
 			item.properties.reduce((target, property, index) => {
+				debug(`${property}::` + item.exports);
 				target[property] = item.exports;
 				return target;
 			}, target);
 		}
-		debug(`target`, target);
 	}
 	parse() {
 		const filepaths = globby.sync(['*.js'], {
@@ -34,9 +34,7 @@ class FileLoader {
 		return items;
 	}
 	_getProperties(filepath) {
-		let properties = filepath
-			.substring(0, filepath.lastIndexOf('.'))
-			.split('/');
+		let properties = filepath.substring(0, filepath.lastIndexOf('.')).split('/');
 		return properties.map(propery => {
 			return propery.toLowerCase();
 		});
@@ -45,6 +43,7 @@ class FileLoader {
 		let exports = utils.loadFile(fullpath);
 		if (initializer) {
 			exports = initializer(exports);
+			debug(exports);
 		}
 		return exports;
 	}

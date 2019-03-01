@@ -18,6 +18,7 @@ class Router extends KoaRouter {
 				const splited = spliteAndResolveRouterParams({ args, app: this.app });
 				// format and rebuild params
 				args = splited.prefix.concat(splited.middlewares);
+				debug('args', args);
 				return super[method](...args);
 			};
 		});
@@ -36,6 +37,7 @@ function spliteAndResolveRouterParams({ args, app }) {
 		prefix = args.slice(0, 1);
 		middlewares = args.slice(1);
 	}
+	debug('middlewares', middlewares);
 	return { prefix, middlewares };
 }
 module.exports = Router;

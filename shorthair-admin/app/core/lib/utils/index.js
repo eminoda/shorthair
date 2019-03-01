@@ -1,6 +1,7 @@
 const is = require('is-type-of');
 const path = require('path');
 const fs = require('fs');
+const debug = require('debug');
 module.exports = {
 	loadFile(filepath) {
 		try {
@@ -19,5 +20,12 @@ module.exports = {
 			err.message = `[egg-core] load file: ${filepath}, error: ${err.message}`;
 			throw err;
 		}
+	},
+	async callFn(fn, args, ctx) {
+		args = args || [];
+		if (!is.function(fn)) return;
+		// if (is.generatorFunction(fn)) fn = co.wrap(fn);
+		debug('ctx', ctx);
+		return ctx ? fn.call(ctx, ...args) : fn(...args);
 	}
 };
