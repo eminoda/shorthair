@@ -11,7 +11,7 @@ class Loader {
 		this.serverEnv = this.getServerEnv();
 		this.app = options.app;
 		this.timing = this.app.timing;
-		this.loadConfig();
+		this.config = this.loadConfig();
 		this.loadController();
 		this.loadRouter();
 	}
@@ -25,7 +25,7 @@ class Loader {
 		return serverEnv;
 	}
 	loadConfig() {
-		this.config = this._preLoadAppConfig();
+		return this._preLoadAppConfig();
 	}
 	loadRouter() {
 		// app 加载 router.js
@@ -79,10 +79,10 @@ class Loader {
 				directory: path.join(this.baseDir, 'app/controller'),
 				initializer: (obj, opt) => {
 					if (is.class(obj)) {
-						return this.wrapObject(obj, opt.path);
+						return this.wrapObject(obj);
 					} else {
 						// TODO: 其他类型，虽然 class 为主
-						return {};
+						throw new Error('controller mustbe class type');
 					}
 				}
 			},
@@ -92,6 +92,7 @@ class Loader {
 		this.loadToApp(controllerBase, 'controller', opt);
 		this.timing.end(timingKey);
 	}
+	// class Template{}{} ==> template.method
 	wrapObject(Controller) {
 		let proto = Controller.prototype;
 		const ret = {};
@@ -102,8 +103,10 @@ class Loader {
 			}
 			const d = Object.getOwnPropertyDescriptor(proto, key);
 			if (is.function(d.value)) {
-				const controller = new Controller(this);
-				ret[key] = controller[key];
+				ret[key] = async (ctx, next) => {
+					const controller = new Controller(this);
+					return await controller[key].call(this, ctx, next);
+				};
 			}
 		}
 		// proto = Object.getPrototypeOf(proto);

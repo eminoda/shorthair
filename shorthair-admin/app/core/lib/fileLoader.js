@@ -18,6 +18,7 @@ class FileLoader {
 				return target;
 			}, target);
 		}
+		debug(`target`, target);
 	}
 	parse() {
 		const filepaths = globby.sync(['*.js'], {
@@ -43,7 +44,7 @@ class FileLoader {
 	_getExports(fullpath, { initializer, inject }, pathName) {
 		let exports = utils.loadFile(fullpath);
 		if (initializer) {
-			exports = initializer(exports, { path: fullpath, pathName });
+			exports = initializer(exports);
 		}
 		return exports;
 	}
