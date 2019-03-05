@@ -1,20 +1,19 @@
 const Koa = require('koa');
 const debug = require('debug')('application');
-const Loader = require('./lib/loader');
+const Loader = require('./lib/loader/loader');
 const Router = require('./lib/router');
-const Timing = require('./lib/utils/timing');
 const ROUTER = Symbol('app#router'); // unique
 // const BaseContextClass = require('./lib/baseContextClass');
 class Application extends Koa {
 	constructor(options = {}) {
 		super();
-		this.baseDir = process.cwd();
-		this.timing = new Timing();
+		this.baseDir = process.cwd(); // project root dirtory
 		this.loader = new Loader({
 			baseDir: this.baseDir,
 			app: this
 		});
 		debug('config', this.loader.config);
+		debug('controller', this.controller);
 	}
 	get router() {
 		if (this[ROUTER]) {
