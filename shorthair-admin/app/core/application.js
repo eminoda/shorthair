@@ -12,8 +12,8 @@ class Application extends Koa {
 			baseDir: this.baseDir,
 			app: this
 		});
-		debug('config', this.loader.config);
-		debug('controller', this.controller);
+		// debug('config', this.loader.config);
+		// debug('controller', this.controller);
 	}
 	get router() {
 		if (this[ROUTER]) {

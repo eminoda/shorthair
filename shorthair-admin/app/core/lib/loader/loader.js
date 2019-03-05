@@ -3,7 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const is = require('is-type-of');
 const FileLoader = require('./fileLoader');
-
+const FULLPATH = Symbol('Loader#FULLPATH');
 class Loader {
 	constructor(options = {}) {
 		this.name = 'Loader';

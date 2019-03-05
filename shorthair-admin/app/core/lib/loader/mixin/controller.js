@@ -2,8 +2,8 @@ const debug = require('debug')('loader:controller');
 const path = require('path');
 const is = require('is-type-of');
 const utils = require('./../../utils');
-const FULLPATH = Symbol('Loader#FULLPATH');
-const PATHNAME = Symbol('Loader#PATHNAME');
+const { FULLPATH } = require('../../utils/symbol');
+
 module.exports = {
 	loadController(opt) {
 		opt = Object.assign(
@@ -45,11 +45,10 @@ function wrapClass(Controller) {
 				'.' +
 				key +
 				'()';
-			ret[key][PATHNAME] = Controller.prototype.pathName;
 		}
 	}
 	// proto = Object.getPrototypeOf(proto);
-	debug('ret', ret);
+	// debug('ret', ret);
 	return ret;
 }
 function methodToMiddleware(Controller, key) {

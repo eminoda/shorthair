@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const debug = require('debug')('fileLoader');
 const utils = require('../utils');
-
+const { FULLPATH } = require('../utils/symbol');
 class FileLoader {
 	constructor(options = {}) {
 		this.options = options;
@@ -15,14 +15,27 @@ class FileLoader {
 		const target = this.options.target; // app.controller
 		for (const item of items) {
 			item.properties.reduce((target, property, index) => {
-				target[property] = item.exports;
-				return target;
+				let obj;
+				debug(
+					'property %s index %s length',
+					property,
+					index,
+					item.properties.length - 1
+				);
+				if (index == item.properties.length - 1) {
+					obj = item.exports;
+					// obj[FULLPATH] = item.fullpath;
+				} else {
+					obj = target[property] || {};
+				}
+				target[property] = obj;
+				return obj;
 			}, target);
 		}
 	}
 	parse() {
 		// TODO '**/*.js'
-		const filepaths = globby.sync(['*.js'], {
+		const filepaths = globby.sync(['**/*.js'], {
 			cwd: this.options.directory
 		});
 		const items = [];
