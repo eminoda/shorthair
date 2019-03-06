@@ -59,15 +59,15 @@ function convertMiddlewares(middlewares, app) {
 	return middlewares.concat([wrappedController]);
 }
 function resolveController(controller, app) {
-	if (is.string(controller)) {
-		const actions = controller.split('.');
-		let obj = app.controller;
-		actions.forEach(key => {
-			obj = obj[key];
-			if (!obj) throw new Error(`controller '${controller}' not exists`);
-		});
-		controller = obj;
-	}
+	// if (is.string(controller)) {
+	// 	const actions = controller.split('.');
+	// 	let obj = app.controller;
+	// 	actions.forEach(key => {
+	// 		obj = obj[key];
+	// 		if (!obj) throw new Error(`controller '${controller}' not exists`);
+	// 	});
+	// 	controller = obj;
+	// }
 	// ensure controller is exists
 	if (!controller) throw new Error('controller not exists');
 	return controller;

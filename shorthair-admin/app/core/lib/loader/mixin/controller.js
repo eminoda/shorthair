@@ -11,7 +11,8 @@ module.exports = {
 				directory: path.join(this.baseDir, 'app/controller'),
 				initializer: (obj, opt) => {
 					if (is.class(obj)) {
-						obj.prototype.pathName = opt.pathName;
+						// wrapClass record
+						// obj.prototype.pathName = opt.pathName;
 						obj.prototype.fullPath = opt.path;
 						return wrapClass(obj);
 					} else {

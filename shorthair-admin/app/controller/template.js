@@ -3,7 +3,7 @@ const Controller = require('../core').Controller;
 class TemplateController extends Controller {
 	async show(ctx) {
 		const { config } = this;
-		ctx.body = config;
+		ctx.body = this.ctx.service.template.getTemplateById();
 	}
 	async edit(ctx, next) {
 		ctx.body = 222;

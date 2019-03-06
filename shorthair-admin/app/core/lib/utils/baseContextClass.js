@@ -3,7 +3,7 @@ class BaseContextClass {
 		this.ctx = ctx;
 		this.app = ctx.app;
 		this.config = ctx.app.config;
-		// this.service = ctx.app.service;
+		this.service = ctx.app.service;
 	}
 }
 module.exports = BaseContextClass;
