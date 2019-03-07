@@ -4,6 +4,7 @@ const path = require('path');
 const is = require('is-type-of');
 const FileLoader = require('./fileLoader');
 const ContextLoader = require('./contextLoader');
+const PluginLoader = require('./pluginLoader');
 class Loader {
 	constructor(options = {}) {
 		this.name = 'Loader';
@@ -16,6 +17,7 @@ class Loader {
 	}
 	loadAll() {
 		this.loadConfig();
+		this.loadPlugin();
 		this.loadService();
 		this.loadController();
 		this.loadRouter();
@@ -84,10 +86,24 @@ class Loader {
 		);
 		new ContextLoader(opt).load();
 	}
+	loadToPlugin(directory, property, opt) {
+		const target = (this.app[property] = {});
+		opt = Object.assign(
+			{},
+			{
+				directory,
+				target,
+				inject: this.app
+			},
+			opt
+		);
+		new PluginLoader(opt).load();
+	}
 }
 
 const loaders = [
 	require('./mixin/config.js'),
+	require('./mixin/plugin.js'),
 	require('./mixin/controller.js'),
 	require('./mixin/service.js')
 ];
