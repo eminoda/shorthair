@@ -1,3 +1,6 @@
 const app = require('../app/app.js');
 
-app.listen(3000);
+app.ready(() => {
+	console.log('all ready');
+	app.listen(3000);
+});
