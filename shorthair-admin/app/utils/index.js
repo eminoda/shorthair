@@ -10,7 +10,6 @@ exports.httpResult = (status, result) => {
 	if (status == 'delete') {
 		if (result.ok) {
 			ret.resultMsg = TEXT.SUCCESS_DELETE;
-			ret.data = result;
 			if (!result.deletedCount) {
 				ret.resultMsg = TEXT.ERROR_NO_DELETE;
 				ret.success = false;
@@ -22,7 +21,6 @@ exports.httpResult = (status, result) => {
 	} else if (status == 'post') {
 		if (result.ok) {
 			ret.resultMsg = TEXT.SUCCESS_UPDATE;
-			ret.data = result;
 			if (!result.nModified) {
 				ret.resultMsg = TEXT.ERROR_NO_UPDATE;
 				ret.success = false;

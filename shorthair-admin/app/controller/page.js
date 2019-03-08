@@ -30,7 +30,7 @@ class PageController extends Controller {
 
 	async list() {
 		const { ctx, service } = this;
-		const result = await service.page.getPages(ctx.request.body);
+		const result = await service.page.getPages(ctx.query);
 		ctx.body = httpResult(ctx.method, result);
 	}
 }
