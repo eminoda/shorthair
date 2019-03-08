@@ -1,9 +1,7 @@
-const Loader = require('./loader');
-const is = require('is-type-of');
-const globby = require('globby');
+const debug = require('debug')('fileLoader');
 const fs = require('fs');
 const path = require('path');
-const debug = require('debug')('fileLoader');
+const globby = require('globby');
 const utils = require('../utils');
 const { FULLPATH, EXPORTS } = require('../utils/symbol');
 class FileLoader {
@@ -29,7 +27,7 @@ class FileLoader {
 				return obj;
 			}, target);
 		}
-		debug('target', target);
+		// debug('target', target);
 	}
 	parse() {
 		// TODO '**/*.js'

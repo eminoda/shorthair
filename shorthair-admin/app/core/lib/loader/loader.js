@@ -4,7 +4,6 @@ const path = require('path');
 const is = require('is-type-of');
 const FileLoader = require('./fileLoader');
 const ContextLoader = require('./contextLoader');
-const PluginLoader = require('./pluginLoader');
 class Loader {
 	constructor(options = {}) {
 		this.name = 'Loader';
@@ -87,7 +86,7 @@ class Loader {
 		new ContextLoader(opt).load();
 	}
 	loadToPlugin(directory, property, opt) {
-		const target = (this.app[property] = {});
+		const target = this.app;
 		opt = Object.assign(
 			{},
 			{
@@ -97,7 +96,7 @@ class Loader {
 			},
 			opt
 		);
-		new PluginLoader(opt).load();
+		new FileLoader(opt).load();
 	}
 }
 
