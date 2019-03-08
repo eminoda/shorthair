@@ -4,5 +4,8 @@ class TemplateService extends Service {
 		const { app } = this;
 		return await app.plugin.mongo.user.find();
 	}
+	async getTemplateList() {
+		return {};
+	}
 }
 module.exports = TemplateService;

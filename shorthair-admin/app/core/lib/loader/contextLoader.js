@@ -14,14 +14,14 @@ class ContextLoader extends FileLoader {
 		// app.context.service execute
 		Object.defineProperty(app.context, property, {
 			get() {
-				debug('ContextLoader');
 				if (!this[CLASSLOADER]) {
 					this[CLASSLOADER] = new Map();
 				}
 				const classLoader = this[CLASSLOADER];
 				let instance = classLoader.get(property); // app.context.service
-				// this is koa ctx
+				// this ==> ctx
 				if (!instance) {
+					// target = { service1:{ fn1(){}fn2(){} } }
 					instance = getInstance(target, this);
 					classLoader.set(property, instance);
 				}
@@ -38,7 +38,7 @@ class ClassLoader {
 		this._cache = new Map();
 		// properties is options.target
 		// app.context.service.user
-		debug('properties', properties);
+		// debug('properties', properties);
 		for (const property in properties) {
 			this.defineProperty(property, properties[property]);
 		}
@@ -48,6 +48,7 @@ class ClassLoader {
 		// ClassLoader.user
 		Object.defineProperty(this, property, {
 			get() {
+				debug(values);
 				let instance = this._cache.get(property);
 				if (!instance) {
 					instance = getInstance(values, this._ctx);
@@ -60,7 +61,7 @@ class ClassLoader {
 }
 /**
  *
- * @param {*} target
+ * @param {*} values
  * @param {*} ctx app.context
  */
 function getInstance(values, ctx) {

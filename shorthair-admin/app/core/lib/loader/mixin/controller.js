@@ -49,7 +49,7 @@ function wrapClass(Controller) {
 		}
 	}
 	// proto = Object.getPrototypeOf(proto);
-	// debug('ret', ret);
+	// debug(ret);
 	return ret;
 }
 function methodToMiddleware(Controller, key) {
