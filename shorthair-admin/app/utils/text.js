@@ -6,5 +6,6 @@ module.exports = {
 	ERROR_NO_UPDATE: '更新失败，未找到资源',
 	ERROR_UPDATE: '更新异常',
 	SUCCESS_SHOW: '查询成功',
-	ERROR_SHOW: '查询异常'
+	ERROR_SHOW: '查询异常',
+	SUCCESS_CREATE: '添加成功'
 };

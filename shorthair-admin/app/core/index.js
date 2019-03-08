@@ -1,2 +1,2 @@
-exports.Controller = require('./lib/utils/baseContextClass');
-exports.Service = require('./lib/utils/baseContextClass');
+exports.Controller = require('./lib/utils/baseController');
+exports.Service = require('./lib/utils/baseService');

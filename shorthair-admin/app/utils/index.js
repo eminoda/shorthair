@@ -19,7 +19,9 @@ exports.httpResult = (status, result) => {
 			ret.success = false;
 		}
 	} else if (status == 'post') {
-		if (result.ok) {
+		if (result.id || result._id) {
+			ret.resultMsg = TEXT.SUCCESS_CREATE;
+		} else if (result.ok) {
 			ret.resultMsg = TEXT.SUCCESS_UPDATE;
 			if (!result.nModified) {
 				ret.resultMsg = TEXT.ERROR_NO_UPDATE;

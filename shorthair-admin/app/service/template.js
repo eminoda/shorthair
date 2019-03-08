@@ -1,26 +1,33 @@
 const Service = require('../core').Service;
 class TemplateService extends Service {
-	async createTemplate(template) {
-		const { app } = this;
-		return await app.plugin.mongo.template.create(template);
+	constructor(ctx) {
+		super(ctx);
+		this.name = 'template';
 	}
-	async deleteTemplateById(id) {
-		const { app } = this;
-		return await app.plugin.mongo.template.deleteOne({ id: id });
-	}
-	async updateTemplateById(id, data) {
-		const { app } = this;
-		return await app.plugin.mongo.template.updateOne({ id: id }, data);
-	}
+	// async createTemplate(template) {
+	// 	const { app } = this;
+	// 	return await app.plugin.mongo.template.create(template);
+	// }
 
-	async getTemplateById(id) {
-		const { app } = this;
-		return await app.plugin.mongo.template.findOne({ id: id });
-	}
+	// async deleteTemplateById(id) {
+	// 	const { app } = this;
+	// 	return await app.plugin.mongo.template.deleteOne({ id: id });
+	// }
 
-	async getTemplates(data) {
-		const { app } = this;
-		return await app.plugin.mongo.template.find(data);
-	}
+	// async updateTemplateById(id, data) {
+	// 	const { app } = this;
+	// 	return await app.plugin.mongo.template.updateOne({ id: id }, data);
+	// }
+
+	// async getTemplateById(id) {
+	// 	const { app } = this;
+	// 	console.log(this.name);
+	// 	return await app.plugin.mongo.template.findOne({ id: id });
+	// }
+
+	// async getTemplates(data) {
+	// 	const { app } = this;
+	// 	return await app.plugin.mongo.template.find(data);
+	// }
 }
 module.exports = TemplateService;

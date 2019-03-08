@@ -32,24 +32,32 @@ function wrapClass(Controller) {
 	let proto = Controller.prototype;
 	const ret = {};
 	const keys = Object.getOwnPropertyNames(proto);
-	for (const key of keys) {
-		if (key === 'constructor') {
-			continue;
+
+	// tracing the prototype chain
+	while (proto !== Object.prototype) {
+		const keys = Object.getOwnPropertyNames(proto);
+		for (const key of keys) {
+			// getOwnPropertyNames will return constructor
+			// that should be ignored
+			if (key === 'constructor') {
+				continue;
+			}
+			// skip getter, setter & non-function properties
+			const d = Object.getOwnPropertyDescriptor(proto, key);
+			// prevent to override sub method
+			if (is.function(d.value) && !ret.hasOwnProperty(key)) {
+				ret[key] = methodToMiddleware(Controller, key);
+				ret[key][FULLPATH] =
+					Controller.prototype.fullPath +
+					'#' +
+					Controller.name +
+					'.' +
+					key +
+					'()';
+			}
 		}
-		const d = Object.getOwnPropertyDescriptor(proto, key);
-		if (is.function(d.value) && !ret.hasOwnProperty(key)) {
-			ret[key] = methodToMiddleware(Controller, key);
-			ret[key][FULLPATH] =
-				Controller.prototype.fullPath +
-				'#' +
-				Controller.name +
-				'.' +
-				key +
-				'()';
-		}
+		proto = Object.getPrototypeOf(proto);
 	}
-	// proto = Object.getPrototypeOf(proto);
-	// debug(ret);
 	return ret;
 }
 function methodToMiddleware(Controller, key) {
