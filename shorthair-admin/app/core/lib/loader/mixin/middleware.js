@@ -25,7 +25,6 @@ module.exports = {
 			let mw = app.middlewares[orderName];
 			mw = wrapMiddleware(mw, {});
 			if (mw) {
-				console.log('add use middleware');
 				app.use(mw);
 			}
 		}
