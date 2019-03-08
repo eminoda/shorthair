@@ -17,6 +17,7 @@ class Loader {
 	loadAll() {
 		this.loadConfig();
 		this.loadPlugin();
+		this.loadMiddleware();
 		this.loadService();
 		this.loadController();
 		this.loadRouter();
@@ -104,7 +105,8 @@ const loaders = [
 	require('./mixin/config.js'),
 	require('./mixin/plugin.js'),
 	require('./mixin/controller.js'),
-	require('./mixin/service.js')
+	require('./mixin/service.js'),
+	require('./mixin/middleware.js')
 ];
 for (const loader of loaders) {
 	Object.assign(Loader.prototype, loader);
