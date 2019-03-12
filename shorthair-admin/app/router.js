@@ -13,4 +13,10 @@ module.exports = app => {
 	router.post('/templates/:id', controller.template.update);
 	router.get('/templates/:id', controller.template.show);
 	router.get('/templates', controller.template.list);
+
+	router.post('/nodes', controller.node.create);
+	router.delete('/nodes/:id', controller.node.destroy);
+	router.post('/nodes/:id', controller.node.update);
+	router.get('/nodes/:id', controller.node.show);
+	router.get('/nodes', controller.node.list);
 };
