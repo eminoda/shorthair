@@ -3,7 +3,7 @@ const uuidv1 = require('uuid/v1');
 const nodeSchema = new mongoose.Schema(
 	{
 		id: { type: String, default: uuidv1() },
-		childId: String,
+		parentId: String,
 		name: String,
 		nodeType: Number, // 1 普通类型；3 文本类型
 		tag: String,

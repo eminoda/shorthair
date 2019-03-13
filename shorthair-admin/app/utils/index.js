@@ -2,8 +2,8 @@ const TEXT = require('./text');
 const debug = require('debug')('utils');
 exports.httpResult = (status, result) => {
 	status = status && status.toLowerCase();
-	debug('status %s', status);
-	debug('result', result);
+	// debug('status %s', status);
+	// debug('result', result);
 	const ret = {
 		success: true
 	};

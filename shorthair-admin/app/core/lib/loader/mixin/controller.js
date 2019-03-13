@@ -62,8 +62,8 @@ function wrapClass(Controller) {
 }
 function methodToMiddleware(Controller, key) {
 	// router use
-	return function classControllerMiddleware(...args) {
+	return async function classControllerMiddleware(...args) {
 		const controller = new Controller(this);
-		return utils.callFn(controller[key], args, controller);
+		return await utils.callFn(controller[key], args, controller);
 	};
 }

@@ -6,21 +6,16 @@ class NodeController extends Controller {
 		super(ctx);
 		this.name = 'node';
 	}
+	/**
+	 * isTree boolean 是否具有节点树
+	 */
 	async show() {
 		const { ctx, service } = this;
-		// const result = await service[this.name].getItem(ctx.params.id);
-		let self = this;
-		const result = await getTree(ctx.params.id, function(id) {
-			service[self.name].getList(id);
-		});
+		const isTree = ctx.query.isTree || false;
+		const result = isTree
+			? await service[this.name].getTree(ctx.params.id)
+			: await service[this.name].getItem(ctx.params.id);
 		ctx.body = httpResult(ctx.method, result);
 	}
-}
-async function getTree(id, cb) {
-	let node = await cb(id);
-	if (node && node.childId) {
-		node.children = await getTree(node.childId, cb);
-	}
-	return node;
 }
 module.exports = NodeController;

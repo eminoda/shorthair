@@ -69,8 +69,8 @@ Node 节点
 
 | 属性      | 说明 | 举例 |
 | --------- | ---- | ---- |
-| nodeId    | -    | -    |
-| childId   | -    | -    |
+| id        | -    | -    |
+| parentId  | -    | -    |
 | styleId   | -    | -    |
 | elementId | -    | -    |
 

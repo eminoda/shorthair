@@ -1,7 +1,7 @@
 module.exports = options => {
 	return async (ctx, next) => {
-		console.log(1);
+		console.log('start');
 		await next();
-		console.log(2);
+		console.log('end');
 	};
 };

@@ -22,7 +22,6 @@ class BaseService extends BaseContextClass {
 
 	async getItem(id) {
 		const { app } = this;
-		console.log(this.name);
 		return await app.plugin.mongo[this.name].findOne({ id: id });
 	}
 
