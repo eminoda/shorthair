@@ -5,30 +5,19 @@ class NodeService extends Service {
 		super(ctx);
 		this.name = 'node';
 	}
-	async getChildren(pId) {
+	async getChildNodes(parentId) {
 		const { app } = this;
-		let parentNode = await app.plugin.mongo[this.name].findOne({
-			id: pId,
-			deleted: false
+		let childNodes = await app.plugin.mongo[this.name].find({
+			parentId: parentId
 		});
-		if (parentNode) {
-			let childNodes = await app.plugin.mongo[this.name].find({
-				parentId: pId,
-				deleted: false
-			});
+		childNodes = JSON.parse(JSON.stringify(childNodes));
+		if (childNodes) {
 			for (let i = 0; i < childNodes.length; i++) {
 				let childNode = childNodes[i];
-				childNode.children = await app.plugin.mongo[this.name].find({
-					parentId: childNode.id,
-					deleted: false
-				});
+				childNode.childNodes = await this.getChildNodes(childNode.id);
 			}
-			childNodes = JSON.parse(JSON.stringify(childNodes));
-
-			parentNode = JSON.parse(JSON.stringify(parentNode));
-			parentNode.children = childNodes;
 		}
-		return parentNode;
+		return childNodes;
 	}
 }
 module.exports = NodeService;

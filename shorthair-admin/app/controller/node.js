@@ -9,12 +9,12 @@ class NodeController extends Controller {
 	/**
 	 * isTree boolean 是否具有节点树
 	 */
-	async show() {
+	async list() {
 		const { ctx, service } = this;
-		const isTree = ctx.query.isTree || false;
+		const isTree = !!ctx.query.isTree;
 		const result = isTree
-			? await service[this.name].getTree(ctx.params.id)
-			: await service[this.name].getItem(ctx.params.id);
+			? await service[this.name].getChildNodes(ctx.query.id)
+			: await service[this.name].getList(ctx.query);
 		ctx.body = httpResult(ctx.method, result);
 	}
 }
