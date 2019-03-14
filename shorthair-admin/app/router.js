@@ -19,4 +19,6 @@ module.exports = app => {
 	router.post('/nodes/:id', controller.node.update);
 	router.get('/nodes/:id', controller.node.show);
 	router.get('/nodes', controller.node.list);
+
+	router.post('/styleTables', controller.styletable.create);
 };

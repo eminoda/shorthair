@@ -10,7 +10,7 @@ const nodeSchema = new mongoose.Schema(
 		className: String,
 		attribute: Array,
 		text: String,
-		styleTableId: String,
+		styleTableId: { type: mongoose.Schema.Types.ObjectId, ref: 'styletable' },
 		deleted: { type: Boolean, default: false },
 		createDate: { type: Date, default: Date.now },
 		updateDate: { type: Date, default: Date.now }

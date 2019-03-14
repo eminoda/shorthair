@@ -7,14 +7,16 @@ class NodeController extends Controller {
 		this.name = 'node';
 	}
 	/**
-	 * isTree boolean 是否具有节点树
+	 * @param id string
+	 * @param isTree boolean 是否具有节点树
 	 */
-	async list() {
+	async show() {
 		const { ctx, service } = this;
 		const isTree = !!ctx.query.isTree;
+		const id = ctx.params.id;
 		const result = isTree
-			? await service[this.name].getChildNodes(ctx.query.id)
-			: await service[this.name].getList(ctx.query);
+			? await service[this.name].getTree(id)
+			: await service[this.name].getItem(id);
 		ctx.body = httpResult(ctx.method, result);
 	}
 }

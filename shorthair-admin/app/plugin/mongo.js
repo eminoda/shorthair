@@ -17,6 +17,7 @@ function createModel(mongo, schemas) {
 		let schema = item.exports;
 		Object.defineProperty(mongo, model, {
 			get() {
+				debug(model);
 				return mongoose.model(model, schema);
 			}
 		});

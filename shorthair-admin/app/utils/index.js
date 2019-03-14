@@ -1,5 +1,6 @@
 const TEXT = require('./text');
 const debug = require('debug')('utils');
+exports.mongoParse = data => JSON.parse(JSON.stringify(data));
 exports.httpResult = (status, result) => {
 	status = status && status.toLowerCase();
 	// debug('status %s', status);
