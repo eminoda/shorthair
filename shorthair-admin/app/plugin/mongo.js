@@ -2,8 +2,11 @@ const debug = require('debug')('mongo');
 const mongoose = require('mongoose');
 const path = require('path');
 const FileLoader = require('../core/lib/loader/fileLoader');
+const MODELS = Symbol('mongoModules');
+
 module.exports = (app, opt) => {
 	const mongo = {};
+	mongo[MODELS] = new Map();
 	const config = app.config.mongo;
 	createConnect(config);
 	const schemas = parseSchema(opt);
@@ -12,13 +15,19 @@ module.exports = (app, opt) => {
 };
 
 function createModel(mongo, schemas) {
+	let modelMap = mongo[MODELS];
+
 	for (let item of schemas) {
 		let model = item.properties[0];
 		let schema = item.exports;
+
+		let modelInstance = mongoose.model(model, schema);
+		debug('model %s', model);
+		modelMap.set(model, modelInstance);
+
 		Object.defineProperty(mongo, model, {
 			get() {
-				debug(model);
-				return mongoose.model(model, schema);
+				return modelMap.get(model);
 			}
 		});
 	}

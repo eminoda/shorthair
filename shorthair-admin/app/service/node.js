@@ -9,7 +9,6 @@ class NodeService extends Service {
 
 	async getItem(id) {
 		const { app } = this;
-		app.plugin.mongo['styletable'];
 		return await app.plugin.mongo[this.name]
 			.findOne({ id: id })
 			.populate('styleTableId');
