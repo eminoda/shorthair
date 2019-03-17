@@ -2,7 +2,12 @@ const mongoose = require('mongoose');
 const uuidv1 = require('uuid/v1');
 const templateSchema = new mongoose.Schema(
 	{
-		id: { type: String, default: uuidv1() },
+		id: {
+			type: String,
+			default: function() {
+				return uuidv1();
+			}
+		},
 		name: String,
 		path: String,
 		nodeId: String,
