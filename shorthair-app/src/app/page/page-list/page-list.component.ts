@@ -13,8 +13,8 @@ export class PageListComponent implements OnInit {
   ngOnInit() {
     this.httpService
       .request({
-        method: 'GET',
-        url: '/api/wtemplates'
+        method: 'get',
+        url: '/api/templates'
       })
       .subscribe(
         data => {
