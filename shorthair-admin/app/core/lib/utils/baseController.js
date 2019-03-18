@@ -33,8 +33,16 @@ class BaseService extends BaseContextClass {
 
 	async list() {
 		const { ctx, service } = this;
-		const result = await service[this.name].getList(ctx.query);
-		ctx.body = httpResult(ctx.method, result);
+		const pageSize = Number(ctx.query.pageSize || 10);
+		const page = Number(ctx.query.page || 1);
+		const list = await service[this.name].getList(ctx.query);
+		const total = await service[this.name].getCount(ctx.query);
+		ctx.body = httpResult(ctx.method, {
+			list,
+			total,
+			pageSize,
+			page
+		});
 	}
 }
 module.exports = BaseService;

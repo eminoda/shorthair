@@ -25,9 +25,23 @@ class BaseService extends BaseContextClass {
 		return await app.plugin.mongo[this.name].findOne({ id: id });
 	}
 
-	async getList(data) {
+	async getList(query) {
+		let pageSize = query.pageSize ? query.pageSize : 10;
+		let page = query.page ? query.page : 1;
 		const { app } = this;
-		return await app.plugin.mongo[this.name].find(data);
+		query.pageSize && delete query.pageSize;
+		query.page && delete query.page;
+		return await app.plugin.mongo[this.name]
+			.find(query)
+			.skip(Number(pageSize * (page - 1)))
+			.limit(Number(pageSize));
+	}
+
+	async getCount(query) {
+		const { app } = this;
+		query.pageSize && delete query.pageSize;
+		query.page && delete query.page;
+		return await app.plugin.mongo[this.name].find(query).count();
 	}
 }
 module.exports = BaseService;
