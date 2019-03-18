@@ -68,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "shorthair-app:build"
+            "browserTarget": "shorthair-app:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

@@ -1,5 +1,6 @@
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
+import { HttpRequest } from '@angular/common/http';
 
 @Component({
   selector: 'app-page-list',
@@ -10,13 +11,18 @@ export class PageListComponent implements OnInit {
   constructor(private httpService: HttpService) {}
 
   ngOnInit() {
-    this.httpService.request('GET', '/user/api').subscribe(
-      data => {
-        console.log(data);
-      },
-      response => {
-        console.log(response);
-      }
-    );
+    this.httpService
+      .request({
+        method: 'GET',
+        url: '/api/wtemplates'
+      })
+      .subscribe(
+        data => {
+          console.log(data);
+        },
+        err => {
+          console.log(err);
+        }
+      );
   }
 }
