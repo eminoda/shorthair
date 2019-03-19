@@ -11,8 +11,8 @@ import { PageCreateComponent } from './page/page-create/page-create.component';
 const routes: Routes = [
   { path: '', redirectTo: '/page/list', pathMatch: 'full' },
   { path: 'page/list', component: PageListComponent },
-  { path: 'page/:id', component: PageEditComponent },
   { path: 'page/create', component: PageCreateComponent },
+  { path: 'page/:id', component: PageEditComponent },
   { path: 'template/list', component: TemplateListComponent },
   { path: 'node/list', component: NodeListComponent },
   { path: 'website/list', component: WebsiteListComponent }

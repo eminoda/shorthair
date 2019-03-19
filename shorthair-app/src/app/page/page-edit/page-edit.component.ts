@@ -54,20 +54,24 @@ export class PageEditComponent implements OnInit {
       );
   }
   submitForm() {
-    this.httpService
-      .request({
-        method: 'post',
-        url: `/api/pages/${this.id}`,
-        body: this.validateForm.value
-      })
-      .subscribe(
-        resp => {
-          this.message.info(resp.resultMsg);
-          this.queryItem();
-        },
-        err => {
-          this.message.info(err.message);
-        }
-      );
+    if (!this.validateForm.valid) {
+      this.message.info('输入有误，请检查');
+    } else {
+      this.httpService
+        .request({
+          method: 'post',
+          url: `/api/pages/${this.id}`,
+          body: this.validateForm.value
+        })
+        .subscribe(
+          resp => {
+            this.message.info(resp.resultMsg);
+            this.queryItem();
+          },
+          err => {
+            this.message.info(err.message);
+          }
+        );
+    }
   }
 }
