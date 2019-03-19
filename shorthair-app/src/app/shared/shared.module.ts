@@ -4,11 +4,29 @@ import { HttpService } from './http.service';
 import { DeleteTextPipe } from './pipe/delete-text.pipe';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
 import { ButtonOperatorComponent } from './button-operator/button-operator.component';
+import { RouterModule } from '@angular/router';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [DeleteTextPipe, ButtonOperatorComponent],
-  imports: [CommonModule, NgZorroAntdModule],
+  imports: [
+    CommonModule,
+    RouterModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgZorroAntdModule
+  ],
   providers: [HttpService],
-  exports: [DeleteTextPipe, ButtonOperatorComponent]
+  exports: [
+    DeleteTextPipe,
+    ButtonOperatorComponent,
+    CommonModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    NgZorroAntdModule
+  ]
 })
 export class SharedModule {}

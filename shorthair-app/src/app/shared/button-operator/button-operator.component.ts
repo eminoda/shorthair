@@ -19,8 +19,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./button-operator.component.scss']
 })
 export class ButtonOperatorComponent implements OnInit {
-  @Input() deleteStatus: boolean;
   @Input() id: string;
+  @Input() updateLink: string | any[];
+  @Input() deleteStatus: boolean;
   @Output() deleteEvent = new EventEmitter<Observable<any>>();
   deleteVisable: boolean = false;
 
@@ -30,16 +31,24 @@ export class ButtonOperatorComponent implements OnInit {
 
   handelDeleteOperate(id: string) {
     this.deleteVisable = false;
+    // 逻辑删除
     this.deleteEvent.emit(
       this.httpService.request({
-        method: 'delete',
-        url: `/api/pages/${id}`
+        method: 'post',
+        url: `/api/pages/${id}`,
+        body: {
+          deleted: !this.deleteStatus
+        }
       })
     );
   }
 
   showModal(): void {
-    this.deleteVisable = true;
+    if (this.deleteStatus) {
+      this.handelDeleteOperate(this.id);
+    } else {
+      this.deleteVisable = true;
+    }
   }
 
   handleCancel(): void {

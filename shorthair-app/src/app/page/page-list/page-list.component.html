@@ -23,7 +23,8 @@
       <td>
         <app-button-operator
           [id]="data.id"
-          [deleteStatus]="data.delete"
+          [updateLink]="['/page', data.id]"
+          [deleteStatus]="data.deleted"
           (deleteEvent)="deleteById($event)"
         ></app-button-operator>
       </td>

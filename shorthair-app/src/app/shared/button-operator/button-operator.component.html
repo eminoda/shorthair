@@ -7,7 +7,7 @@
   >
     {{ deleteStatus | deleteText }}
   </button>
-  <button nz-button nzSize="small">修改</button>
+  <button nz-button nzSize="small" [routerLink]="updateLink">修改</button>
 </nz-button-group>
 <nz-modal
   nzTitle="操作确认"
