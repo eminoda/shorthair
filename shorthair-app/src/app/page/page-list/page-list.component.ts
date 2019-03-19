@@ -2,6 +2,7 @@ import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { PageOption } from '../../interface/page-option';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-page-list',
@@ -20,21 +21,16 @@ export class PageListComponent implements OnInit {
   ngOnInit() {
     this.queryList();
   }
-  deleteById(id) {
-    this.httpService
-      .request({
-        method: 'delete',
-        url: `/api/pages/${id}`
-      })
-      .subscribe(
-        resp => {
-          this.message.info(resp.resultMsg);
-          this.queryList();
-        },
-        err => {
-          this.message.info(err.message);
-        }
-      );
+  deleteById($event: Observable<any>) {
+    $event.subscribe(
+      resp => {
+        this.message.info(resp.resultMsg);
+        this.queryList();
+      },
+      err => {
+        this.message.info(err.message);
+      }
+    );
   }
   queryList() {
     this.httpService

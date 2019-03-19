@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { PageListComponent } from './page-list/page-list.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
-import { DeleteTextPipe } from '../shared/pipe/delete-text.pipe';
 import { SharedModule } from '../shared/shared.module';
 
 @NgModule({

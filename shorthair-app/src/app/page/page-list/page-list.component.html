@@ -21,17 +21,11 @@
       <td>{{ data.path }}</td>
       <td>{{ data.device }}</td>
       <td>
-        <nz-button-group>
-          <button
-            nz-button
-            nzSize="small"
-            [nzType]="data.delete ? 'primary' : 'danger'"
-            (click)="deleteById(data.id)"
-          >
-            {{ data.delete | deleteText }}
-          </button>
-          <button nz-button nzSize="small">修改</button>
-        </nz-button-group>
+        <app-button-operator
+          [id]="data.id"
+          [deleteStatus]="data.delete"
+          (deleteEvent)="deleteById($event)"
+        ></app-button-operator>
       </td>
     </tr>
   </tbody>
