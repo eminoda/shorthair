@@ -49,13 +49,13 @@ export class PageEditComponent implements OnInit {
           }
         },
         err => {
-          this.message.info(err.message);
+          this.message.error(err.message);
         }
       );
   }
   submitForm() {
     if (!this.validateForm.valid) {
-      this.message.info('输入有误，请检查');
+      this.message.error('输入有误，请检查');
     } else {
       this.httpService
         .request({

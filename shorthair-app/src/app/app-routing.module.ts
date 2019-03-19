@@ -7,6 +7,8 @@ import { NodeListComponent } from './node/node-list/node-list.component';
 import { WebsiteListComponent } from './website/website-list/website-list.component';
 import { PageEditComponent } from './page/page-edit/page-edit.component';
 import { PageCreateComponent } from './page/page-create/page-create.component';
+import { TemplateCreateComponent } from './template/template-create/template-create.component';
+import { TemplateEditComponent } from './template/template-edit/template-edit.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/page/list', pathMatch: 'full' },
@@ -14,6 +16,8 @@ const routes: Routes = [
   { path: 'page/create', component: PageCreateComponent },
   { path: 'page/:id', component: PageEditComponent },
   { path: 'template/list', component: TemplateListComponent },
+  { path: 'template/create', component: TemplateCreateComponent },
+  { path: 'template/:id', component: TemplateEditComponent },
   { path: 'node/list', component: NodeListComponent },
   { path: 'website/list', component: WebsiteListComponent }
 ];

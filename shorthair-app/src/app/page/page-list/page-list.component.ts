@@ -48,7 +48,7 @@ export class PageListComponent implements OnInit {
           this.pageOption.total = resp.data.total;
         },
         err => {
-          console.log(err);
+          this.message.error(err.message);
         }
       );
   }
