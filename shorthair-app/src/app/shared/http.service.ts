@@ -20,16 +20,11 @@ export class HttpService {
   public request(req: RequestOption): Observable<any> {
     req.method = req.method ? req.method.toUpperCase() : 'GET';
 
-    const httpRequest = new HttpRequest(
-      req.method,
-      req.url,
-      this.appendParams(req.body),
-      {
-        headers: this.setDefaultHeaders(),
-        params: this.appendParams(req.param),
-        responseType: 'json'
-      }
-    );
+    const httpRequest = new HttpRequest(req.method, req.url, this.appendParams(req.body), {
+      headers: this.setDefaultHeaders(),
+      params: this.appendParams(req.param),
+      responseType: 'json'
+    });
 
     return Observable.create(observer => {
       this.http.request(httpRequest).subscribe(
@@ -39,7 +34,7 @@ export class HttpService {
             if (data.success) {
               observer.next(res.body);
             } else {
-              observer.error(data.resultMsg);
+              observer.error(new Error(data.resultMsg));
             }
           }
         },
@@ -62,10 +57,7 @@ export class HttpService {
   private setDefaultHeaders(headers?: any) {
     if (!headers) {
       let headers = new HttpHeaders();
-      headers = headers.set(
-        'Content-type',
-        'application/x-www-form-urlencoded'
-      );
+      headers = headers.set('Content-type', 'application/x-www-form-urlencoded');
       headers = headers.set('X-Requested-With', 'XMLHttpRequest');
       return headers;
     }

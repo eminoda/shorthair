@@ -11,7 +11,7 @@
       <th>页面名称</th>
       <th>访问地址</th>
       <th>设备</th>
-      <th>删除</th>
+      <th>操作</th>
     </tr>
   </thead>
   <tbody>
@@ -20,7 +20,19 @@
       <td>{{ data.name }}</td>
       <td>{{ data.path }}</td>
       <td>{{ data.device }}</td>
-      <td>{{ data.deleted }}</td>
+      <td>
+        <nz-button-group>
+          <button
+            nz-button
+            nzSize="small"
+            [nzType]="data.delete ? 'primary' : 'danger'"
+            (click)="deleteById(data.id)"
+          >
+            {{ data.delete | deleteText }}
+          </button>
+          <button nz-button nzSize="small">修改</button>
+        </nz-button-group>
+      </td>
     </tr>
   </tbody>
 </nz-table>

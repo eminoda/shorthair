@@ -1,6 +1,6 @@
 import { HttpService } from './../../shared/http.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpRequest } from '@angular/common/http';
+import { NzMessageService } from 'ng-zorro-antd';
 import { PageOption } from '../../interface/page-option';
 
 @Component({
@@ -15,10 +15,26 @@ export class PageListComponent implements OnInit {
     page: 1
   };
 
-  constructor(private httpService: HttpService) {}
+  constructor(private httpService: HttpService, private message: NzMessageService) {}
 
   ngOnInit() {
     this.queryList();
+  }
+  deleteById(id) {
+    this.httpService
+      .request({
+        method: 'delete',
+        url: `/api/pages/${id}`
+      })
+      .subscribe(
+        resp => {
+          this.message.info(resp.resultMsg);
+          this.queryList();
+        },
+        err => {
+          this.message.info(err.message);
+        }
+      );
   }
   queryList() {
     this.httpService

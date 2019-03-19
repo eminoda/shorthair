@@ -14,6 +14,7 @@ import { PageModule } from './page/page.module';
 import { NodeModule } from './node/node.module';
 import { WebsiteModule } from './website/website.module';
 import { TemplateModule } from './template/template.module';
+import { DeleteTextPipe } from './shared/pipe/delete-text.pipe';
 
 registerLocaleData(zh);
 
