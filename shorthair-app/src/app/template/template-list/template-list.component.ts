@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { PageOption } from '../../interface/page-option';
 import { Observable } from 'rxjs';
+import { TemplateService } from '../template.service';
 
 @Component({
   selector: 'app-template-list',
@@ -15,31 +16,16 @@ export class TemplateListComponent implements OnInit {
     pageSize: 5,
     page: 1
   };
-  constructor(private httpService: HttpService, private message: NzMessageService) {}
+  constructor(private templateService: TemplateService, private message: NzMessageService) {}
 
   ngOnInit() {
     this.queryList();
   }
-  deleteById($event: Observable<any>) {
-    $event.subscribe(
-      resp => {
-        this.message.info(resp.resultMsg);
-        this.queryList();
-      },
-      err => {
-        this.message.info(err.message);
-      }
-    );
-  }
   queryList() {
-    this.httpService
-      .request({
-        method: 'get',
-        url: '/api/templates',
-        param: {
-          page: this.pageOption.page,
-          pageSize: this.pageOption.pageSize
-        }
+    this.templateService
+      .queryList({
+        page: this.pageOption.page,
+        pageSize: this.pageOption.pageSize
       })
       .subscribe(
         resp => {
@@ -51,8 +37,21 @@ export class TemplateListComponent implements OnInit {
         }
       );
   }
+
   pageChange($event) {
     this.pageOption.page = $event;
     this.queryList();
+  }
+
+  deleteById($event: Observable<any>) {
+    $event.subscribe(
+      resp => {
+        this.message.info(resp.resultMsg);
+        this.queryList();
+      },
+      err => {
+        this.message.info(err.message);
+      }
+    );
   }
 }

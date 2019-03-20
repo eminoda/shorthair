@@ -1,3 +1,43 @@
-<p>
-  template-edit works!
-</p>
+<form nz-form (ngSubmit)="submitForm()" [formGroup]="validateForm">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired>模板名称</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="name" formControlName="name" />
+      <nz-form-explain *ngIf="validateForm.get('name')?.dirty && validateForm.get('name')?.errors"
+        >输入不能为空</nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="nodeId" nzRequired>节点</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <nz-select id="nodeId" formControlName="nodeId" nzPlaceHolder="请选择节点">
+        <template *ngFor="let node of nodes">
+          <nz-option [nzValue]="node.id" [nzLabel]="node.name" *ngIf="!node.deleted"></nz-option>
+        </template>
+      </nz-select>
+      <nz-form-explain
+        *ngIf="validateForm.get('nodeId')?.dirty && validateForm.get('nodeId')?.errors"
+        >输入不能为空</nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="deleted" nzRequired>删除状态</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <nz-select id="deleted" formControlName="deleted" nzPlaceHolder="请选择删除状态">
+        <nz-option [nzValue]="true" nzLabel="true"></nz-option>
+        <nz-option [nzValue]="false" nzLabel="false"></nz-option>
+      </nz-select>
+      <nz-form-explain
+        *ngIf="validateForm.get('deleted')?.dirty && validateForm.get('deleted')?.errors"
+        >输入不能为空</nz-form-explain
+      >
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item nz-row style="margin-bottom:8px;">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">更新</button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

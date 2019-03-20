@@ -38,16 +38,9 @@ export class AppComponent {
           id: 21,
           name: '页面管理',
           url: '/page/list'
-        }
-      ]
-    },
-    {
-      id: 30,
-      name: '模板',
-      icon: 'table',
-      subMenus: [
+        },
         {
-          id: 31,
+          id: 22,
           name: '模板管理',
           url: '/template/list'
         }

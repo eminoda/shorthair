@@ -27,6 +27,7 @@
         <app-button-operator
           [id]="data.id"
           [updateLink]="['/page', data.id]"
+          [deleteApi]="'/api/pages/' + data.id"
           [deleteStatus]="data.deleted"
           (deleteEvent)="deleteById($event)"
         ></app-button-operator>

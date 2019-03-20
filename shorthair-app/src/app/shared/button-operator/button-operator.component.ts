@@ -21,6 +21,7 @@ import { Observable } from 'rxjs';
 export class ButtonOperatorComponent implements OnInit {
   @Input() id: string;
   @Input() updateLink: string | any[];
+  @Input() deleteApi: string;
   @Input() deleteStatus: boolean;
   @Output() deleteEvent = new EventEmitter<Observable<any>>();
   deleteVisable: boolean = false;
@@ -35,7 +36,7 @@ export class ButtonOperatorComponent implements OnInit {
     this.deleteEvent.emit(
       this.httpService.request({
         method: 'post',
-        url: `/api/pages/${id}`,
+        url: this.deleteApi,
         body: {
           deleted: !this.deleteStatus
         }

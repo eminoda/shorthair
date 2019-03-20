@@ -12,7 +12,6 @@
     <tr>
       <th>序号</th>
       <th>模板名称</th>
-      <th>根节点id</th>
       <th>节点id</th>
       <th>操作</th>
     </tr>
@@ -21,12 +20,12 @@
     <tr *ngFor="let data of list; index as i">
       <td>{{ i + 1 }}</td>
       <td>{{ data.name }}</td>
-      <td>{{ data.rootId }}</td>
       <td>{{ data.nodeId }}</td>
       <td>
         <app-button-operator
           [id]="data.id"
           [updateLink]="['/template', data.id]"
+          [deleteApi]="'/api/templates/' + data.id"
           [deleteStatus]="data.deleted"
           (deleteEvent)="deleteById($event)"
         ></app-button-operator>
