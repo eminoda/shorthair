@@ -1,3 +1,44 @@
-<p>
-  node-list works!
-</p>
+<div class="operate">
+  <button nz-button [nzType]="'primary'" [routerLink]="['/node/create']">新增</button>
+</div>
+<nz-table
+  [nzData]="list"
+  [nzFrontPagination]="false"
+  [nzPageSize]="pageOption.pageSize"
+  [nzTotal]="pageOption.total"
+  (nzPageIndexChange)="pageChange($event)"
+>
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>节点名称</th>
+      <th>节点id</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of list; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.id }}</td>
+      <td>
+        <app-button-operator
+          [id]="data.id"
+          [updateLink]="['/node', data.id]"
+          [deleteApi]="'/api/nodes/' + data.id"
+          [deleteStatus]="data.deleted"
+          (deleteEvent)="deleteById($event)"
+        ></app-button-operator>
+        <button
+          nz-button
+          nzType="primary"
+          nzSize="small"
+          [routerLink]="['/node/tree', data.id]"
+          style="margin-left:10px"
+        >
+          节点树
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -9,6 +9,9 @@ import { PageEditComponent } from './page/page-edit/page-edit.component';
 import { PageCreateComponent } from './page/page-create/page-create.component';
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { TemplateEditComponent } from './template/template-edit/template-edit.component';
+import { NodeCreateComponent } from './node/node-create/node-create.component';
+import { NodeEidtComponent } from './node/node-eidt/node-eidt.component';
+import { NodeTreeComponent } from './node/node-tree/node-tree.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/page/list', pathMatch: 'full' },
@@ -19,6 +22,9 @@ const routes: Routes = [
   { path: 'template/create', component: TemplateCreateComponent },
   { path: 'template/:id', component: TemplateEditComponent },
   { path: 'node/list', component: NodeListComponent },
+  { path: 'node/create', component: NodeCreateComponent },
+  { path: 'node/tree/:id', component: NodeTreeComponent },
+  { path: 'node/:id', component: NodeEidtComponent },
   { path: 'website/list', component: WebsiteListComponent }
 ];
 

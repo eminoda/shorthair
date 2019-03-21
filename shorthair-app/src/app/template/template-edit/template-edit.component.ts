@@ -34,14 +34,19 @@ export class TemplateEditComponent implements OnInit {
     this.queryNodeList();
   }
   queryNodeList() {
-    this.nodeService.queryList().subscribe(
-      resp => {
-        this.nodes = resp.data.list;
-      },
-      err => {
-        this.message.info(err.message);
-      }
-    );
+    this.nodeService
+      .queryList({
+        page: 1,
+        pageSize: 100
+      })
+      .subscribe(
+        resp => {
+          this.nodes = resp.data.list;
+        },
+        err => {
+          this.message.info(err.message);
+        }
+      );
   }
   queryItem() {
     this.templateService.queryItemById(this.id).subscribe(

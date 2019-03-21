@@ -8,10 +8,11 @@ import { HttpService } from '../shared/http.service';
 export class NodeService {
   constructor(private httpService: HttpService) {}
 
-  queryList(): Observable<any> {
+  queryList(param): Observable<any> {
     return this.httpService.request({
       method: 'get',
-      url: `/api/nodes`
+      url: `/api/nodes`,
+      param
     });
   }
 

@@ -43,6 +43,11 @@ export class AppComponent {
           id: 22,
           name: '模板管理',
           url: '/template/list'
+        },
+        {
+          id: 23,
+          name: '节点管理',
+          url: '/node/list'
         }
       ]
     }
