@@ -67,23 +67,16 @@ Template 模板
 
 Node 节点
 
-| 属性      | 说明   | 举例 |
-| --------- | ------ | ---- |
-| id        | -      | -    |
-| name      | -      | -    |
-| parentId  | 父节点 | -    |
-| styleId   | -      | -    |
-| elementId | -      | -    |
-
-Element 元素
-
-| 属性    | 说明   | 举例 |
-| ------- | ------ | ---- |
-| id      | -      | -    |
-| name    | 元素名 | -    |
-| tag     | 标签   | div  |
-| attribs | -      | -    |
-| title   | -      | -    |
+| 属性       | 说明             | 举例 |
+| ---------- | ---------------- | ---- |
+| id         | -                | -    |
+| name       | -                | -    |
+| parentId   | 父节点           | -    |
+| styleId    | -                | -    |
+| nodeType   | 普通：1，文本：3 | -    |
+| tag        | 标签             | div  |
+| attributes | -                | -    |
+| text       | -                | -    |
 
 StyleTable 样式
 

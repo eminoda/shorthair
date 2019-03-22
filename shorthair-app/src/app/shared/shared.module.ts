@@ -7,9 +7,10 @@ import { ButtonOperatorComponent } from './button-operator/button-operator.compo
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AttributeDirective } from './directive/attribute.directive';
 
 @NgModule({
-  declarations: [DeleteTextPipe, ButtonOperatorComponent],
+  declarations: [DeleteTextPipe, ButtonOperatorComponent, AttributeDirective],
   imports: [
     CommonModule,
     RouterModule,
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [HttpService],
   exports: [
     DeleteTextPipe,
+    AttributeDirective,
     ButtonOperatorComponent,
     CommonModule,
     HttpClientModule,

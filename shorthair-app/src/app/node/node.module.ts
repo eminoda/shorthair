@@ -6,6 +6,7 @@ import { NodeCreateComponent } from './node-create/node-create.component';
 import { NodeEidtComponent } from './node-eidt/node-eidt.component';
 import { NodeTreeComponent } from './node-tree/node-tree.component';
 import { NodeModalNodeCreateComponent } from './node-modal-node-create/node-modal-node-create.component';
+import { AttributeItemComponent } from './attribute-item/attribute-item.component';
 
 @NgModule({
   declarations: [
@@ -13,9 +14,10 @@ import { NodeModalNodeCreateComponent } from './node-modal-node-create/node-moda
     NodeCreateComponent,
     NodeEidtComponent,
     NodeTreeComponent,
-    NodeModalNodeCreateComponent
+    NodeModalNodeCreateComponent,
+    AttributeItemComponent
   ],
-  entryComponents: [NodeModalNodeCreateComponent],
+  entryComponents: [NodeModalNodeCreateComponent, AttributeItemComponent],
   providers: [NodeService],
   imports: [SharedModule]
 })

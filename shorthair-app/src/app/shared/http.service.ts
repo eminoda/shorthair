@@ -49,7 +49,15 @@ export class HttpService {
   private appendParams(obj) {
     let params = new HttpParams();
     for (let key in obj) {
-      params = params.set(key, String(obj[key]));
+      // serialize array params
+      if (obj[key] instanceof Array) {
+        let objs = obj[key];
+        objs.forEach(element => {
+          params = params.append(`${key}`, String(JSON.stringify(element)));
+        });
+      } else {
+        params = params.set(key, String(obj[key]));
+      }
     }
     return params;
   }

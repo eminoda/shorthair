@@ -13,10 +13,10 @@ const nodeSchema = new mongoose.Schema(
 		nodeType: Number, // 1 普通类型；3 文本类型
 		tag: String,
 		className: String,
-		attribute: Array,
+		attributes: Array,
 		text: String,
 		styleTableId: { type: mongoose.Schema.Types.ObjectId, ref: 'styletable' },
-		deleted: { type: Boolean, default: false },
+		// deleted: { type: Boolean, default: false },
 		createDate: { type: Date, default: Date.now },
 		updateDate: { type: Date, default: Date.now }
 	},
