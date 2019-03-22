@@ -1,83 +1,93 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { NzFormatEmitEvent, NzTreeNodeOptions, NzTreeComponent, NzTreeNode } from 'ng-zorro-antd';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import {
+  NzFormatEmitEvent,
+  NzTreeNodeOptions,
+  NzTreeComponent,
+  NzModalService,
+  NzMessageService,
+  NzTreeNode
+} from 'ng-zorro-antd';
+import { NodeModalNodeCreateComponent } from '../node-modal-node-create/node-modal-node-create.component';
+import { NodeService } from '../node.service';
+import { ActivatedRoute } from '@angular/router';
 
+import { Node } from '../../interface/node';
+import { TreeNode } from '@angular/router/src/utils/tree';
 @Component({
   selector: 'app-node-tree',
   templateUrl: './node-tree.component.html',
   styleUrls: ['./node-tree.component.scss']
 })
-export class NodeTreeComponent implements OnInit {
+export class NodeTreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeCom') treeCom: NzTreeComponent;
-  defaultCheckedKeys = ['10020'];
-  defaultSelectedKeys = ['10010'];
-  defaultExpandedKeys = ['100', '1001'];
 
-  nodes: NzTreeNodeOptions[] = [
-    {
-      title: 'parent 1',
-      key: '100',
-      children: [
-        {
-          title: 'parent 1-0',
-          key: '1001',
-          disabled: true,
-          children: [
-            { title: 'leaf 1-0-0', key: '10010', disableCheckbox: true, isLeaf: true },
-            { title: 'leaf 1-0-1', key: '10011', isLeaf: true }
-          ]
-        },
-        {
-          title: 'parent 1-1',
-          key: '1002',
-          children: [
-            { title: 'leaf 1-1-0', key: '10020', isLeaf: true },
-            { title: 'leaf 1-1-1', key: '10021', isLeaf: true }
-          ]
-        }
-      ]
-    }
-  ];
+  nodes: NzTreeNodeOptions[] = [];
+  rootNode: Node;
+  currentKey: string;
+  constructor(
+    private message: NzMessageService,
+    private modalService: NzModalService,
+    private nodeService: NodeService,
+    private activeRoute: ActivatedRoute
+  ) {}
 
-  nzClick(event: NzFormatEmitEvent): void {
-    console.log(event);
+  ngOnInit(): void {}
+  ngAfterViewInit(): void {
+    this.initRootNode();
   }
 
-  nzCheck(event: NzFormatEmitEvent): void {
-    console.log(event);
-  }
-
-  // nzSelectedKeys change
-  nzSelect(keys: string[]): void {
-    console.log(keys, this.treeCom.getSelectedNodeList());
-  }
-
-  constructor() {}
-
-  ngOnInit(): void {
-    setTimeout(() => {
-      console.log(this.treeCom.getTreeNodeByKey('10011'), 'get nzTreeNode with key');
-      console.log(
-        this.treeCom.getTreeNodes(),
-        this.treeCom.getCheckedNodeList(),
-        this.treeCom.getSelectedNodeList(),
-        this.treeCom.getExpandedNodeList()
-      );
-    }, 1500);
-  }
-
-  addNode(): void {
-    console.log(
-      this.treeCom.getTreeNodeByKey('100').addChildren([
-        {
-          title: 'parent 3',
-          key: '200',
-          children: [
-            { title: 'leaf 2-2-0', key: '20010', isLeaf: true },
-            { title: 'leaf 2-2-1', key: '20011', isLeaf: true }
-          ]
-        }
-      ])
+  initRootNode(): void {
+    let id = this.activeRoute.snapshot.params.id;
+    this.nodeService.queryItemById(id).subscribe(
+      resp => {
+        this.rootNode = resp.data;
+        this.nodes = [
+          {
+            title: this.rootNode.name || this.rootNode.id,
+            key: '010',
+            expanded: true
+          }
+        ];
+      },
+      err => {
+        this.message.error(err.message);
+      }
     );
-    console.log(this.nodes);
+  }
+
+  chooseNode(event: NzFormatEmitEvent): void {
+    this.currentKey = event.node.key;
+  }
+
+  addChildNode(): void {
+    if (!this.currentKey) {
+      this.message.error('请选择子节点');
+    } else {
+      let parentNode = this.treeCom.getTreeNodeByKey(this.currentKey);
+      let index =
+        parentNode.children && parentNode.children.length ? parentNode.children.length + 1 : 1;
+      parentNode.addChildren([
+        {
+          title: `${parentNode.level + 1}-${String(index * 10)}`,
+          key: `${parentNode.level + 1}${String(index * 10)}`,
+          expanded: true
+        }
+      ]);
+    }
+  }
+  showCreateNodeModal(): void {
+    // const modal = this.modalService.create({
+    //   nzTitle: '添加子节点',
+    //   nzContent: NodeModalNodeCreateComponent,
+    //   nzComponentParams: {
+    //     parentNode: parentNode
+    //   },
+    //   nzFooter: null
+    // });
+    // modal.afterClose.subscribe((childNode: any) => {
+    //   if (childNode) {
+    //     parentNode.addChildren([childNode]);
+    //   }
+    // });
   }
 }

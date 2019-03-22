@@ -1,15 +1,3 @@
-<nz-tree
-  #treeCom
-  [nzData]="nodes"
-  nzCheckable
-  nzShowLine
-  [nzCheckedKeys]="defaultCheckedKeys"
-  [nzExpandedKeys]="defaultExpandedKeys"
-  [nzSelectedKeys]="defaultSelectedKeys"
-  (nzClick)="nzClick($event)"
-  (nzCheckBoxChange)="nzCheck($event)"
-  (nzExpandChange)="nzCheck($event)"
->
-</nz-tree>
+<nz-tree #treeCom [nzData]="nodes" nzShowLine (nzClick)="chooseNode($event)"> </nz-tree>
 
-<button nz-button (click)="addNode()">添加子节点</button>
+<button nz-button (click)="addChildNode()">添加子节点</button>
