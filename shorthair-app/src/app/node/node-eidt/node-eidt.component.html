@@ -1,27 +1,39 @@
 <form nz-form (ngSubmit)="submitForm()" [formGroup]="form">
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired>节点名称</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired
+      >节点名称</nz-form-label
+    >
     <nz-form-control [nzSm]="8" [nzXs]="24">
       <input nz-input id="name" formControlName="name" />
-      <nz-form-explain *ngIf="form.get('name')?.dirty && form.get('name')?.errors"
+      <nz-form-explain
+        *ngIf="form.get('name')?.dirty && form.get('name')?.errors"
         >输入不能为空</nz-form-explain
       >
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="nodeType" nzRequired>元素类型</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="nodeType" nzRequired
+      >元素类型</nz-form-label
+    >
     <nz-form-control [nzSm]="8" [nzXs]="24">
-      <nz-select id="nodeType" formControlName="nodeType" nzPlaceHolder="请选择元素类型">
+      <nz-select
+        id="nodeType"
+        formControlName="nodeType"
+        nzPlaceHolder="请选择元素类型"
+      >
         <nz-option [nzValue]="1" nzLabel="普通"></nz-option>
         <nz-option [nzValue]="3" nzLabel="文本"></nz-option>
       </nz-select>
-      <nz-form-explain *ngIf="form.get('nodeType')?.dirty && form.get('nodeType')?.errors"
+      <nz-form-explain
+        *ngIf="form.get('nodeType')?.dirty && form.get('nodeType')?.errors"
         >输入不能为空</nz-form-explain
       >
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="tag" nzRequired>标签</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="tag" nzRequired
+      >标签</nz-form-label
+    >
     <nz-form-control [nzSm]="8" [nzXs]="24">
       <nz-select id="tag" formControlName="tag" nzPlaceHolder="请选择标签">
         <nz-option [nzValue]="'div'" nzLabel="div"></nz-option>
@@ -32,9 +44,13 @@
       >
     </nz-form-control>
   </nz-form-item>
+
+  <template appAttribute></template>
   <nz-form-item nz-row style="margin-bottom:8px;">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">更新</button>
     </nz-form-control>
   </nz-form-item>
 </form>
+
+<button nz-button (click)="addAttribute()">添加属性</button>

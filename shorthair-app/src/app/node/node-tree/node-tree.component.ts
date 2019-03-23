@@ -1,10 +1,4 @@
-import {
-  Component,
-  OnInit,
-  ViewChild,
-  AfterViewInit,
-  ComponentFactoryResolver
-} from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import {
   NzFormatEmitEvent,
   NzTreeNodeOptions,
@@ -13,14 +7,11 @@ import {
   NzMessageService,
   NzTreeNode
 } from 'ng-zorro-antd';
-import { NodeModalNodeCreateComponent } from '../node-modal-node-create/node-modal-node-create.component';
 import { NodeService } from '../node.service';
 import { ActivatedRoute } from '@angular/router';
 
 import { Node } from '../../interface/node';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { AttributeItemComponent } from '../attribute-item/attribute-item.component';
-import { AttributeDirective } from '../../shared/directive/attribute.directive';
 @Component({
   selector: 'app-node-tree',
   templateUrl: './node-tree.component.html',
@@ -28,7 +19,7 @@ import { AttributeDirective } from '../../shared/directive/attribute.directive';
 })
 export class NodeTreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeCom') treeCom: NzTreeComponent;
-  @ViewChild(AttributeDirective) attributeHost: AttributeDirective;
+
   form: FormGroup;
   treeNodes: NzTreeNodeOptions[] = [];
   rootNode: Node;
@@ -42,8 +33,7 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
     private modalService: NzModalService,
     private nodeService: NodeService,
     private activeRoute: ActivatedRoute,
-    private fb: FormBuilder,
-    private componentFactoryResolver: ComponentFactoryResolver
+    private fb: FormBuilder
   ) {}
 
   ngOnInit(): void {
@@ -98,7 +88,9 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
     } else {
       let parentNode = this.treeCom.getTreeNodeByKey(this.currentKey);
       let index =
-        parentNode.children && parentNode.children.length ? parentNode.children.length + 1 : 1;
+        parentNode.children && parentNode.children.length
+          ? parentNode.children.length + 1
+          : 1;
       this.nodeService.createItem({ parentId: this.currentKey }).subscribe(
         resp => {
           parentNode.addChildren([
@@ -153,15 +145,5 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
     //     parentNode.addChildren([childNode]);
     //   }
     // });
-  }
-
-  addAttribute(): void {
-    let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
-      AttributeItemComponent
-    );
-
-    let viewContainerRef = this.attributeHost.viewContainerRef;
-    viewContainerRef.clear();
-    viewContainerRef.createComponent(componentFactory);
   }
 }
