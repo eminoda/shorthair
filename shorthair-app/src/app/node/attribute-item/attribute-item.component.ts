@@ -6,10 +6,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./attribute-item.component.scss']
 })
 export class AttributeItemComponent implements OnInit {
+  attributes = ['className', 'placeholder', 'src'];
+  attribute: {
+    name: string;
+    value: any;
+  } = {
+    name: null,
+    value: null
+  };
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
 }

@@ -3,4 +3,5 @@ export interface Node {
   name?: string;
   delete?: boolean;
   parentId?: string;
+  attributes?: [];
 }

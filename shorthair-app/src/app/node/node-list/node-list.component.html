@@ -33,7 +33,8 @@
           nz-button
           nzType="primary"
           nzSize="small"
-          [routerLink]="['/node/tree', data.id]"
+          [routerLink]="['/node/tree']"
+          [queryParams]="{ nodeId: data.id }"
           style="margin-left:10px"
         >
           节点树

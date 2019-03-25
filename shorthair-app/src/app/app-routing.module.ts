@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'template/:id', component: TemplateEditComponent },
   { path: 'node/list', component: NodeListComponent },
   { path: 'node/create', component: NodeCreateComponent },
-  { path: 'node/tree/:id', component: NodeTreeComponent },
+  { path: 'node/tree', component: NodeTreeComponent },
   { path: 'node/:id', component: NodeEidtComponent },
   { path: 'website/list', component: WebsiteListComponent }
 ];
