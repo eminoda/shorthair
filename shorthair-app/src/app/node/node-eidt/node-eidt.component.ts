@@ -3,9 +3,16 @@ import {
   OnInit,
   Input,
   ComponentFactoryResolver,
-  ViewChild
+  ViewChild,
+  ViewContainerRef,
+  ComponentRef
 } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  Validators,
+  FormGroup,
+  FormControl
+} from '@angular/forms';
 import { NodeService } from '../node.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Node } from '../../interface/node';
@@ -19,9 +26,12 @@ import { AttributeDirective } from '../../shared/directive/attribute.directive';
 export class NodeEidtComponent implements OnInit {
   @Input() id: string;
   @ViewChild(AttributeDirective) attributeHost: AttributeDirective;
-
   form: FormGroup;
   node: Node;
+  attributes = [];
+  tempAttributes = [];
+  attributeTemplates: Array<ViewContainerRef> = [];
+
   constructor(
     private fb: FormBuilder,
     private message: NzMessageService,
@@ -37,17 +47,21 @@ export class NodeEidtComponent implements OnInit {
       text: [null],
       attributes: [null]
     });
-    this.queryItem();
+    this.queryItem(this.id);
   }
 
-  queryItem() {
-    this.nodeService.queryItemById(this.id).subscribe(
+  queryItem(id: string) {
+    this.nodeService.queryItemById(id).subscribe(
       resp => {
         this.node = resp.data;
         for (let key in this.node) {
           let formItem = this.form.get(key);
           if (formItem) {
-            formItem.setValue(this.node[key]);
+            if (key == 'attributes') {
+              this.parseAttributeToForm(this.node[key]);
+            } else {
+              formItem.setValue(this.node[key]);
+            }
           }
         }
       },
@@ -57,13 +71,31 @@ export class NodeEidtComponent implements OnInit {
     );
   }
 
+  private parseAttributeToForm(attributes: []): void {
+    for (let attribute of attributes) {
+      let attributeJSON = JSON.parse(attribute);
+      if (attributeJSON) {
+        this.attributes.push(attributeJSON);
+        this.form.addControl(
+          attributeJSON.name,
+          new FormControl(attributeJSON.value)
+        );
+      }
+    }
+  }
+
   submitForm() {
     if (!this.form.valid) {
       this.message.error('输入有误，请检查');
     } else {
+      // TODO: 新老属性去重、或者提示
+      let attribute = [].concat(this.attributes).concat(this.tempAttributes);
+      this.form.get('attributes').setValue(attribute);
       this.nodeService.updateItem(this.id, this.form.value).subscribe(
         resp => {
           this.message.info(resp.resultMsg);
+          this.removeTemplates();
+          this.queryItem(this.node.id);
         },
         err => {
           this.message.info(err.message);
@@ -72,13 +104,24 @@ export class NodeEidtComponent implements OnInit {
     }
   }
 
-  addAttribute(): void {
+  private removeTemplates(): void {
+    for (let componentRef of this.attributeTemplates) {
+      componentRef.clear();
+    }
+  }
+  addAttributeField(e?: Event): void {
+    if (e) {
+      e.preventDefault();
+    }
     let componentFactory = this.componentFactoryResolver.resolveComponentFactory(
       AttributeItemComponent
     );
     let viewContainerRef = this.attributeHost.viewContainerRef;
     let componentRef = viewContainerRef.createComponent(componentFactory);
-    let data = <AttributeItemComponent>componentRef.instance;
-    console.log(data);
+    this.attributeTemplates.push(viewContainerRef);
+    let attribute = (<AttributeItemComponent>componentRef.instance).attribute;
+    this.tempAttributes.push(attribute);
+    // viewContainerRef.clear();
+    // this.form.addControl(attribute.name, new FormControl(attribute.value));
   }
 }

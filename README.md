@@ -16,8 +16,8 @@
 
 - [x] shorthair-app 项目初始化
 - [x] shorthair-admin 项目初始化
-- [ ] 对象设计
-- [ ] 数据库建表
+- [x] 对象设计
+- [x] 数据库建表
 - [ ] 页面设计
 
 ### 域名
@@ -27,19 +27,23 @@
 
 ### 页面
 
-- [ ] 页面维护
-- [ ] 模板维护
+- [ ] 页面维护 curd
+- [ ] 模板维护 curd
 - [ ] 页面模板双向修改
 - [ ] 预览
 - [ ] 发布
 
-### 模板
+### 通用模板预设
 
 - [ ] 注册表单
 - [ ] 文案信息（TDK、版权信息）
 - [ ] 弹框
 - [ ] 按钮
 - [ ] 图片（背景图）
+
+### 节点
+
+- [ ] 节点树维护
 
 ## 设想&方案
 
@@ -75,43 +79,43 @@
 
 ```js
 [
-  {
-    element: {
-      tag: "div",
-      attribs: {
-        class: "signup-modal-wrap"
-      }
-    },
-    style: {
-      color: "red"
-    },
-    nodes: [
-      {
-        element: {
-          tag: "li",
-          attribs: {
-            class: "shouji"
-          }
-        },
-        style: {
-          color: "green"
-        },
-        nodes: [{}]
-      },
-      {
-        element: {
-          tag: "li",
-          attribs: {
-            class: "shouji"
-          }
-        },
-        style: {
-          color: "green"
-        },
-        nodes: [{}]
-      }
-    ]
-  }
+	{
+		element: {
+			tag: 'div',
+			attribs: {
+				class: 'signup-modal-wrap'
+			}
+		},
+		style: {
+			color: 'red'
+		},
+		nodes: [
+			{
+				element: {
+					tag: 'li',
+					attribs: {
+						class: 'shouji'
+					}
+				},
+				style: {
+					color: 'green'
+				},
+				nodes: [{}]
+			},
+			{
+				element: {
+					tag: 'li',
+					attribs: {
+						class: 'shouji'
+					}
+				},
+				style: {
+					color: 'green'
+				},
+				nodes: [{}]
+			}
+		]
+	}
 ];
 ```
 

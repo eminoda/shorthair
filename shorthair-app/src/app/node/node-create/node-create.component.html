@@ -2,25 +2,12 @@
   <nz-form-item>
     <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired>节点名称</nz-form-label>
     <nz-form-control [nzSm]="8" [nzXs]="24">
-      <input nz-input id="name" formControlName="name" />
+      <input nz-input id="name" formControlName="name" placeholder="命名：类型+终端+功能" />
       <nz-form-explain *ngIf="validateForm.get('name')?.dirty && validateForm.get('name')?.errors"
         >输入不能为空</nz-form-explain
       >
     </nz-form-control>
   </nz-form-item>
-  <!-- <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="isRoot" nzRequired>是否根节点</nz-form-label>
-    <nz-form-control [nzSm]="8" [nzXs]="24">
-      <nz-select id="isRoot" formControlName="isRoot" nzPlaceHolder="请选择">
-        <nz-option [nzValue]="true" nzLabel="是"></nz-option>
-        <nz-option [nzValue]="false" nzLabel="否"></nz-option>
-      </nz-select>
-      <nz-form-explain
-        *ngIf="validateForm.get('isRoot')?.dirty && validateForm.get('isRoot')?.errors"
-        >输入不能为空</nz-form-explain
-      >
-    </nz-form-control>
-  </nz-form-item> -->
   <nz-form-item nz-row style="margin-bottom:8px;">
     <nz-form-control [nzSpan]="14" [nzOffset]="6">
       <button nz-button nzType="primary">新增</button>

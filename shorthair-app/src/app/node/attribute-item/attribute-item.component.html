@@ -1,25 +1,22 @@
 <nz-form-item>
-  <div nz-row>
-    <div nz-col [nzSm]="6" [nzXs]="24">
-      <nz-select
-        style="width: 120px;"
-        [(ngModel)]="attribute.name"
-        nzAllowClear
-        nzPlaceHolder="请选择属性类别"
-      >
-        <nz-option nzValue="className" nzLabel="className"></nz-option>
-        <nz-option nzValue="placeholder" nzLabel="placeholder"></nz-option>
-      </nz-select>
-    </div>
-    <div nz-col [nzSm]="8" [nzXs]="24">
-      <input
-        nz-input
-        placeholder="请输入属性值"
-        [(ngModel)]="attribute.value"
-      />
-    </div>
-    <button nz-button nzType="primary" (click)="showStyleTableModal($event)">
-      添加样式
-    </button>
-  </div>
+  <nz-form-label nzSpan="5" nzRequired>新属性</nz-form-label>
+  <nz-form-control nzSpan="8">
+    <nz-select
+      nzSpan="12"
+      [(ngModel)]="attribute.name"
+      nzPlaceHolder="请选择属性"
+    >
+      <nz-option
+        [nzValue]="item"
+        [nzLabel]="item"
+        *ngFor="let item of attributes"
+      ></nz-option>
+    </nz-select>
+    <input
+      nzSpan="12"
+      nz-input
+      [(ngModel)]="attribute.value"
+      placeholder="请输入属性值"
+    />
+  </nz-form-control>
 </nz-form-item>

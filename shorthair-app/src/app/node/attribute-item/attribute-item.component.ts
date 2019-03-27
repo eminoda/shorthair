@@ -8,23 +8,15 @@ import { NzModalService } from 'ng-zorro-antd';
   styleUrls: ['./attribute-item.component.scss']
 })
 export class AttributeItemComponent implements OnInit {
-  attribute = {
-    name: '',
+  attributes = ['className', 'placeholder', 'src'];
+  attribute: {
+    name: string;
+    value: any;
+  } = {
+    name: null,
     value: null
   };
-  constructor(private modalService: NzModalService) {}
+  constructor() {}
 
   ngOnInit() {}
-
-  showStyleTableModal(e?: Event) {
-    if (e) {
-      e.preventDefault();
-    }
-    const modal = this.modalService.create({
-      nzTitle: '添加样式',
-      nzContent: StyleModalComponent,
-      nzComponentParams: {},
-      nzFooter: null
-    });
-  }
 }

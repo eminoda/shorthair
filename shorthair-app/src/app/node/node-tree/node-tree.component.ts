@@ -11,7 +11,6 @@ import { NodeService } from '../node.service';
 import { ActivatedRoute } from '@angular/router';
 
 import { Node } from '../../interface/node';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 @Component({
   selector: 'app-node-tree',
   templateUrl: './node-tree.component.html',
@@ -20,9 +19,7 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 export class NodeTreeComponent implements OnInit, AfterViewInit {
   @ViewChild('treeCom') treeCom: NzTreeComponent;
 
-  form: FormGroup;
   treeNodes: NzTreeNodeOptions[] = [];
-  rootNode: Node;
 
   checkedKey: string;
   selectedKey: string;
@@ -30,36 +27,58 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
 
   constructor(
     private message: NzMessageService,
-    private modalService: NzModalService,
     private nodeService: NodeService,
-    private activeRoute: ActivatedRoute,
-    private fb: FormBuilder
+    private activeRoute: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
-    this.form = this.fb.group({
-      name: [null, [Validators.required]]
-    });
-  }
-  ngAfterViewInit(): void {
     this.initRootNode();
   }
 
+  ngAfterViewInit(): void {
+    // 使用 ViewChild 时，Tree 方法需要在 ngAfterViewInit 中调用
+  }
+
   initRootNode(): void {
-    let id = this.activeRoute.snapshot.params.id;
-    this.nodeService.queryItemById(id).subscribe(
-      resp => {
-        this.rootNode = resp.data;
-        this.treeNodes = [
-          {
-            title: this.rootNode.name || this.rootNode.id,
-            key: this.rootNode.id,
-            expanded: true
+    let id = this.activeRoute.snapshot.queryParams.nodeId;
+    if (id) {
+      this.nodeService.queryItemById(id).subscribe(
+        resp => {
+          let node = resp.data;
+          if (node) {
+            this.treeNodes = [this.getTreeNode(node, { expanded: true })];
+          } else {
+            this.message.error('当前节点非法，请回列表重新选择');
           }
-        ];
+        },
+        err => {
+          this.message.error(err.message);
+        }
+      );
+    } else {
+      this.createRootNode();
+    }
+  }
+
+  private getTreeNode(
+    node: Node,
+    options?: { expanded: boolean; title?: string }
+  ): NzTreeNodeOptions {
+    return {
+      title: options.title || node.name || node.id,
+      key: node.id,
+      expanded: options.expanded
+    };
+  }
+
+  private createRootNode(): void {
+    this.nodeService.createItem({}).subscribe(
+      resp => {
+        let node = resp.data;
+        this.treeNodes = [this.getTreeNode(node, { expanded: true })];
       },
       err => {
-        this.message.error(err.message);
+        this.message.error(err);
       }
     );
   }
@@ -75,14 +94,28 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
     //   this.clearTreeNodeChecked(this.treeCom.getTreeNodeByKey(this.currentKey).getChildren());
     // }
   }
-  _checkStatus(isChecked: boolean, key: string) {
+  private _checkStatus(isChecked: boolean, key: string) {
     if (isChecked) {
       this.currentKey = key;
     } else {
       this.currentKey = null;
     }
   }
-  addNode(): void {
+
+  createNode(parentNode: NzTreeNode): void {
+    if (!parentNode) {
+      this.message.error('请选择父节点');
+    } else {
+      this.nodeService.createItem({}).subscribe(
+        resp => {},
+        err => {
+          this.message.error(err);
+        }
+      );
+    }
+  }
+
+  addChildNode(): void {
     if (!this.currentKey) {
       this.message.error('请选择节点');
     } else {
@@ -93,13 +126,11 @@ export class NodeTreeComponent implements OnInit, AfterViewInit {
           : 1;
       this.nodeService.createItem({ parentId: this.currentKey }).subscribe(
         resp => {
-          parentNode.addChildren([
-            {
-              title: `${parentNode.level + 1}-${String(index * 10)}`,
-              key: resp.data.id,
-              expanded: true
-            }
-          ]);
+          let childNode = this.getTreeNode(resp.data, {
+            title: `${parentNode.level + 1}-${String(index * 10)}`,
+            expanded: true
+          });
+          parentNode.addChildren([childNode]);
         },
         err => {
           this.message.error(err);
