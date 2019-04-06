@@ -3,7 +3,6 @@ import { Template } from '../../interface/template';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, Validators, FormBuilder } from '@angular/forms';
-import { NodeService } from '../../node/node.service';
 import { TemplateService } from '../template.service';
 @Component({
   selector: 'app-template-edit',
@@ -15,13 +14,7 @@ export class TemplateEditComponent implements OnInit {
   template: Template;
   validateForm: FormGroup;
   nodes: Array<Node>;
-  constructor(
-    private nodeService: NodeService,
-    private templateService: TemplateService,
-    private message: NzMessageService,
-    private activeRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(private templateService: TemplateService, private message: NzMessageService, private activeRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.id = this.activeRoute.snapshot.params.id;
@@ -31,22 +24,6 @@ export class TemplateEditComponent implements OnInit {
       deleted: [null, [Validators.required]]
     });
     this.queryItem();
-    this.queryNodeList();
-  }
-  queryNodeList() {
-    this.nodeService
-      .queryList({
-        page: 1,
-        pageSize: 100
-      })
-      .subscribe(
-        resp => {
-          this.nodes = resp.data.list;
-        },
-        err => {
-          this.message.info(err.message);
-        }
-      );
   }
   queryItem() {
     this.templateService.queryItemById(this.id).subscribe(

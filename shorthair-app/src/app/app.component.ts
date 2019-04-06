@@ -14,40 +14,18 @@ export class AppComponent {
   menus: Array<Menu> = [
     {
       id: 10,
-      name: '站点',
-      icon: 'cloud',
-      subMenus: [
-        {
-          id: 11,
-          name: '域名设置',
-          url: '/website/list'
-        },
-        {
-          id: 12,
-          name: '站点解析',
-          url: '/website/mapper'
-        }
-      ]
-    },
-    {
-      id: 20,
-      name: '页面',
+      name: '活动页',
       icon: 'profile',
       subMenus: [
         {
-          id: 21,
-          name: '页面管理',
+          id: 11,
+          name: '域名',
+          url: '/domain/list'
+        },
+        {
+          id: 12,
+          name: '页面列表',
           url: '/page/list'
-        },
-        {
-          id: 22,
-          name: '模板管理',
-          url: '/template/list'
-        },
-        {
-          id: 23,
-          name: '节点管理',
-          url: '/node/list'
         }
       ]
     }
