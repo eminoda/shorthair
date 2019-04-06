@@ -41,7 +41,7 @@ export class HttpService {
   private appendParams(obj) {
     let params = new HttpParams();
     for (let key in obj) {
-      if (obj[key]) {
+      if (obj[key] || obj[key] === false) {
         // serialize array params
         if (obj[key] instanceof Array) {
           let objs = obj[key];

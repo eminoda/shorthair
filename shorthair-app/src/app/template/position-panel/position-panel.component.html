@@ -1,0 +1,16 @@
+<form nz-form (ngSubmit)="submitForm()" [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="width" nzRequired>宽</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="width" formControlName="width" />
+      <nz-form-explain *ngIf="form.get('width')?.dirty && form.get('width')?.errors">输入不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="height" nzRequired>高</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="height" formControlName="height" />
+      <nz-form-explain *ngIf="form.get('height')?.dirty && form.get('height')?.errors">输入不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+</form>

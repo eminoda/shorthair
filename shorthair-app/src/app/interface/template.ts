@@ -1,6 +1,7 @@
 export interface Template {
   id?: string;
   name: string;
-  nodeId?: string;
-  deleted: boolean;
+  type: number;
+  node: any;
+  deleted?: boolean;
 }

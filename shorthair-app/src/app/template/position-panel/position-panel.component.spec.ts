@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TemplateListComponent } from './template-list.component';
+import { PositionPanelComponent } from './position-panel.component';
 
-describe('TemplateListComponent', () => {
-  let component: TemplateListComponent;
-  let fixture: ComponentFixture<TemplateListComponent>;
+describe('PositionPanelComponent', () => {
+  let component: PositionPanelComponent;
+  let fixture: ComponentFixture<PositionPanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateListComponent ]
+      declarations: [ PositionPanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TemplateListComponent);
+    fixture = TestBed.createComponent(PositionPanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -26,6 +26,11 @@ export class AppComponent {
           id: 12,
           name: '页面列表',
           url: '/page/list'
+        },
+        {
+          id: 13,
+          name: '模板绘制',
+          url: '/template/draw'
         }
       ]
     }

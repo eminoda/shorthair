@@ -1,0 +1,63 @@
+<form nz-form (ngSubmit)="submitForm()" [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="font-size" nzRequired>字体大小</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="font-size" formControlName="font-size" placeholder="12px" />
+      <nz-form-explain *ngIf="form.get('font-size')?.dirty && form.get('font-size')?.errors">输入不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="font-weight" nzRequired>字体加粗</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <!-- <nz-select id="font-weight" formControlName="font-weight" placeholder="请选择删除状态">
+        <nz-option [nzValue]="bold" nzLabel="是"></nz-option>
+        <nz-option [nzValue]="" nzLabel="否"></nz-option>
+      </nz-select> -->
+      <label nz-checkbox>加粗</label>
+      <nz-form-explain *ngIf="form.get('font-weight')?.dirty && form.get('font-weight')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="color" nzRequired>字体颜色</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="color" formControlName="color" placeholder="red" />
+      <nz-form-explain *ngIf="form.get('color')?.dirty && form.get('color')?.errors">输入不能为空</nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="background-color" nzRequired>背景色</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="background-color" formControlName="background-color" placeholder="red" />
+      <nz-form-explain *ngIf="form.get('background-color')?.dirty && form.get('background-color')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="border-color" nzRequired>边框颜色</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="border-color" formControlName="border-color" placeholder="red" />
+      <nz-form-explain *ngIf="form.get('border-color')?.dirty && form.get('border-color')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="border-width" nzRequired>边框粗细</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="border-width" formControlName="border-width" placeholder="1px" />
+      <nz-form-explain *ngIf="form.get('border-width')?.dirty && form.get('border-width')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="border-style" nzRequired>边框样式</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <nz-select id="border-style" formControlName="border-style" nzPlaceHolder="请选择边框样式">
+        <nz-option [nzValue]="dashed" nzLabel="虚线"></nz-option>
+        <nz-option [nzValue]="solid" nzLabel="实线"></nz-option>
+      </nz-select>
+      <nz-form-explain *ngIf="form.get('border-style')?.dirty && form.get('border-style')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+</form>

@@ -1,7 +1,9 @@
 export interface Page {
   id?: string;
-  name: string;
-  path: string;
-  device: string;
-  deleted: boolean;
+  name?: string;
+  domain?: string;
+  path?: string;
+  device?: number;
+  templateId?: string;
+  deleted?: boolean;
 }

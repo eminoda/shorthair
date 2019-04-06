@@ -1,0 +1,13 @@
+<div nz-row>
+  <div nz-col nzSpan="12">
+    <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
+      <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.title">
+        <app-position-panel *ngIf="tab.id==1"></app-position-panel>
+        <app-surface-panel *ngIf="tab.id==2"></app-surface-panel>
+        <app-event-panel *ngIf="tab.id==3"></app-event-panel>
+      </nz-tab>
+    </nz-tabset>
+    <button (click)="saveTemplate()">保存</button>
+  </div>
+  <div nz-col nzSpan="12">2</div>
+</div>

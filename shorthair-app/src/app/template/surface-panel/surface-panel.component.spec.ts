@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TemplateCreateComponent } from './template-create.component';
+import { SurfacePanelComponent } from './surface-panel.component';
 
-describe('TemplateCreateComponent', () => {
-  let component: TemplateCreateComponent;
-  let fixture: ComponentFixture<TemplateCreateComponent>;
+describe('SurfacePanelComponent', () => {
+  let component: SurfacePanelComponent;
+  let fixture: ComponentFixture<SurfacePanelComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ TemplateCreateComponent ]
+      declarations: [ SurfacePanelComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TemplateCreateComponent);
+    fixture = TestBed.createComponent(SurfacePanelComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
