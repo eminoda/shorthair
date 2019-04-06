@@ -1,0 +1,24 @@
+<div class="operate">
+  <button nz-button [nzType]="'primary'" (click)="showDomainCreateModal()">新增</button>
+</div>
+<nz-table [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="pageOption.pageSize" [nzTotal]="pageOption.total"
+  (nzPageIndexChange)="pageChange($event)">
+  <thead>
+    <tr>
+      <th>序号</th>
+      <th>域名</th>
+      <th>备注</th>
+      <th>操作</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of list; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ data.name }}</td>
+      <td>{{ data.remark }}</td>
+      <td>
+        <button nz-button nzSize="small" (click)="showDomainEditModal(data.id)">修改</button>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

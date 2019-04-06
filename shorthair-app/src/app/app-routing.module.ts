@@ -7,9 +7,11 @@ import { PageEditComponent } from './page/page-edit/page-edit.component';
 import { PageCreateComponent } from './page/page-create/page-create.component';
 import { TemplateCreateComponent } from './template/template-create/template-create.component';
 import { TemplateEditComponent } from './template/template-edit/template-edit.component';
+import { DomainListComponent } from './domain/domain-list/domain-list.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/page/list', pathMatch: 'full' },
+  { path: 'domain/list', component: DomainListComponent },
   { path: 'page/list', component: PageListComponent },
   { path: 'page/create', component: PageCreateComponent },
   { path: 'page/:id', component: PageEditComponent },

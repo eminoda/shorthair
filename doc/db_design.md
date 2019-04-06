@@ -25,6 +25,14 @@
 | createDate | -      | -            |
 | updateDate | -      | -            |
 
+### Domain 域名
+
+| 属性   | 说明 | 备注 |
+| ------ | ---- | ---- |
+| id     | -    | -    |
+| name   | -    | -    |
+| remark | -    | -    |
+
 ### System
 
 | 属性       | 说明         | 备注    |

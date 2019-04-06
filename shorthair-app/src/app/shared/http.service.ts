@@ -1,13 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpRequest,
-  HttpResponse,
-  HttpHeaders,
-  HttpEventType,
-  HttpErrorResponse,
-  HttpParams
-} from '@angular/common/http';
+import { HttpClient, HttpRequest, HttpResponse, HttpHeaders, HttpEventType, HttpErrorResponse, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { RequestOption } from '../interface/request-option';
 import { map } from 'rxjs/operators';
@@ -49,14 +41,16 @@ export class HttpService {
   private appendParams(obj) {
     let params = new HttpParams();
     for (let key in obj) {
-      // serialize array params
-      if (obj[key] instanceof Array) {
-        let objs = obj[key];
-        objs.forEach(element => {
-          params = params.append(`${key}`, String(JSON.stringify(element)));
-        });
-      } else {
-        params = params.set(key, String(obj[key]));
+      if (obj[key]) {
+        // serialize array params
+        if (obj[key] instanceof Array) {
+          let objs = obj[key];
+          objs.forEach(element => {
+            params = params.append(`${key}`, String(JSON.stringify(element)));
+          });
+        } else {
+          params = params.set(key, String(obj[key]));
+        }
       }
     }
     return params;

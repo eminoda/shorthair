@@ -1,14 +1,12 @@
 <div class="operate">
   <button nz-button [nzType]="'primary'" [routerLink]="['/page/create']">新增</button>
 </div>
-<nz-table [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="pageOption.pageSize" [nzTotal]="pageOption.total"
-  (nzPageIndexChange)="pageChange($event)">
+<nz-table [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="pageOption.pageSize" [nzTotal]="pageOption.total" (nzPageIndexChange)="pageChange($event)">
   <thead>
     <tr>
       <th>序号</th>
       <th>名称</th>
-      <th>域名</th>
-      <th>地址</th>
+      <th>访问地址</th>
       <th>设备</th>
       <th>状态</th>
       <th>操作</th>
@@ -18,13 +16,11 @@
     <tr *ngFor="let data of list; index as i">
       <td>{{ i + 1 }}</td>
       <td>{{ data.name }}</td>
-      <td>{{data.domain}}</td>
-      <td>{{ data.path }}</td>
-      <td>{{ data.device==1?'mobile':'PC' }}</td>
-      <td>{{data.state==1?'已发布':'未发布'}}</td>
+      <td>{{ 'http://' + data.domain + data.path }}</td>
+      <td>{{ data.device == 1 ? 'mobile' : 'pc' }}</td>
+      <td>{{ data.state == 1 ? '已发布' : '未发布' }}</td>
       <td>
-        <app-button-operator [id]="data.id" [updateLink]="['/page', data.id]" [deleteApi]="'/api/pages/' + data.id"
-          [deleteStatus]="data.deleted" (deleteEvent)="deleteById($event)"></app-button-operator>
+        <app-button-operator [id]="data.id" [updateLink]="['/page', data.id]" [deleteApi]="'/api/pages/' + data.id" [deleteStatus]="data.deleted" (deleteEvent)="deleteById($event)"></app-button-operator>
       </td>
     </tr>
   </tbody>

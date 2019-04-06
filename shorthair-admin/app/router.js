@@ -1,6 +1,15 @@
 const debug = require('debug')('router');
 module.exports = app => {
-	const { router, controller } = app;
+	const {
+		router,
+		controller
+	} = app;
+
+	router.post('/domains', controller.domain.create);
+	router.delete('/domains/:id', controller.domain.destroy);
+	router.post('/domains/:id', controller.domain.update);
+	router.get('/domains/:id', controller.domain.show);
+	router.get('/domains', controller.domain.list);
 
 	router.post('/pages', controller.page.create);
 	router.delete('/pages/:id', controller.page.destroy);
