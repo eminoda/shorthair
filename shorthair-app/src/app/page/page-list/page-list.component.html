@@ -24,7 +24,7 @@
         <app-button-operator [id]="data.id" [updateLink]="['/page', data.id]" [deleteApi]="'/api/pages/' + data.id"
           [deleteStatus]="data.deleted" (deleteEvent)="deleteById($event)"></app-button-operator>
         <button nz-button nzSize="small" [routerLink]="['/template/draw']"
-          [queryParams]="{pageId:data.id,templateId:data.templateId}">绘制页面</button>
+          [queryParams]="{pageId:data.id,templateId:data.templateId}">{{data.templateId?'编辑草稿':'创建模板'}}</button>
       </td>
     </tr>
   </tbody>

@@ -7,7 +7,7 @@
 | id         | -        | -              |
 | name       | 页面名称 | 清明节推广     |
 | domain     | 所属域名 | www.foo.com    |
-| url        | 地址     | /abc/def       |
+| path       | 地址     | /abc/def       |
 | state      | 0 1 2    | 无、草稿、发布 |
 | templateId | 模板 id  | -              |
 | deleted    | 删除     | true           |

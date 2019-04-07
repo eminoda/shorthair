@@ -4,6 +4,8 @@ import { TemplateService } from '../template.service';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Template } from 'src/app/interface/template';
 import { PageService } from 'src/app/page/page.service';
+import { Observable } from 'rxjs';
+import { StyleTable as IStyleTable } from 'src/app/interface/style-table';
 
 @Component({
   selector: 'app-template-draw',
@@ -14,18 +16,23 @@ export class TemplateDrawComponent implements OnInit {
   pageId: string;
   templateId: string;
   node: any;
-  template: Template;
+  template: Template = {};
+  currentNode: any;
   tabs = [
     {
       id: 1,
-      title: '定位'
+      title: 'tree'
     },
     {
       id: 2,
-      title: '外观'
+      title: '定位'
     },
     {
       id: 3,
+      title: '外观'
+    },
+    {
+      id: 4,
       title: '事件'
     }
   ];
@@ -34,7 +41,7 @@ export class TemplateDrawComponent implements OnInit {
   ngOnInit() {
     this.pageId = this.activeRoute.snapshot.queryParams.pageId;
     this.templateId = this.activeRoute.snapshot.queryParams.templateId;
-    // 显示草稿
+    // 判断是否已有模板，显示草稿
     if (this.templateId) {
       this.queryTemplate();
     }
@@ -42,7 +49,12 @@ export class TemplateDrawComponent implements OnInit {
 
   queryTemplate() {
     this.templateService.queryItemById(this.templateId).subscribe(
-      data => {},
+      resp => {
+        this.template = resp.data;
+        this.template.node = JSON.parse(this.template.node);
+        this.currentNode = this.template.node[0].children[0];
+        // console.log(this.currentNode);
+      },
       err => {
         this.message.error(err.message);
       }
@@ -50,6 +62,8 @@ export class TemplateDrawComponent implements OnInit {
   }
 
   saveTemplate() {
+    // console.log(this.currentNode);
+    return;
     this.template = {
       name: 'test',
       node: 123,
@@ -69,6 +83,7 @@ export class TemplateDrawComponent implements OnInit {
         }
       );
     } else {
+      // 更新已有模板
       this.templateService.updateItem(this.templateId, this.template).subscribe(
         resp => {
           this.message.info(resp.resultMsg);
@@ -89,5 +104,9 @@ export class TemplateDrawComponent implements OnInit {
         this.message.error(err.message);
       }
     );
+  }
+
+  updateNode($event: Observable<IStyleTable>) {
+    console.log($event);
   }
 }

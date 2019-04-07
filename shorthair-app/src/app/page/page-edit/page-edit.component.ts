@@ -14,18 +14,15 @@ export class PageEditComponent implements OnInit {
   page: Page;
   validateForm: FormGroup;
 
-  constructor(
-    private pageService: PageService,
-    private message: NzMessageService,
-    private activeRoute: ActivatedRoute,
-    private fb: FormBuilder
-  ) {}
+  constructor(private pageService: PageService, private message: NzMessageService, private activeRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.id = this.activeRoute.snapshot.params.id;
     this.validateForm = this.fb.group({
       name: [null, [Validators.required]],
+      domain: [null, [Validators.required]],
       path: [null, [Validators.required]],
+      templateId: [null, [Validators.required]],
       device: [null, [Validators.required]],
       deleted: [null, [Validators.required]]
     });

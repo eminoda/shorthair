@@ -6,9 +6,10 @@ import { TemplatePreviewComponent } from './template-preview/template-preview.co
 import { PositionPanelComponent } from './position-panel/position-panel.component';
 import { SurfacePanelComponent } from './surface-panel/surface-panel.component';
 import { EventPanelComponent } from './event-panel/event-panel.component';
+import { TreePanelComponent } from './tree-panel/tree-panel.component';
 
 @NgModule({
-  declarations: [TemplateDrawComponent, TemplatePreviewComponent, PositionPanelComponent, SurfacePanelComponent, EventPanelComponent],
+  declarations: [TemplateDrawComponent, TemplatePreviewComponent, PositionPanelComponent, SurfacePanelComponent, EventPanelComponent, TreePanelComponent],
   providers: [TemplateService],
   imports: [SharedModule]
 })

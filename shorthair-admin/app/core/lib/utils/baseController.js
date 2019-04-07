@@ -18,10 +18,7 @@ class BaseService extends BaseContextClass {
 
 	async update() {
 		const { ctx, service } = this;
-		const result = await service[this.name].updateById(
-			ctx.params.id,
-			ctx.request.body
-		);
+		const result = await service[this.name].updateById(ctx.params.id, ctx.request.body);
 		ctx.body = httpResult(ctx.method, result);
 	}
 
