@@ -1,0 +1,18 @@
+<form nz-form (ngSubmit)="submitForm()" [formGroup]="form">
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired>域名</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="name" formControlName="name" placeholder="例如：www.abc.com" />
+      <nz-form-explain *ngIf="form.get('name')?.dirty && form.get('name')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+  <nz-form-item>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="remark">备注</nz-form-label>
+    <nz-form-control [nzSm]="8" [nzXs]="24">
+      <input nz-input id="remark" formControlName="remark" />
+      <nz-form-explain *ngIf="form.get('remark')?.dirty && form.get('remark')?.errors">输入不能为空
+      </nz-form-explain>
+    </nz-form-control>
+  </nz-form-item>
+</form>

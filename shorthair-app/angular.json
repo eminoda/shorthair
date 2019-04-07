@@ -22,10 +22,18 @@
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/favicon.ico", "src/assets"],
+            "assets": [
+              "src/favicon.ico",
+              "src/assets",
+              {
+                "glob": "**/*",
+                "input": "./node_modules/@ant-design/icons-angular/src/inline-svg/",
+                "output": "/assets/"
+              }
+            ],
             "styles": [
               "src/styles.scss",
-              "node_modules/ng-zorro-antd/ng-zorro-antd.less"
+              "node_modules/ng-zorro-antd/ng-zorro-antd.css"
             ],
             "scripts": [],
             "es5BrowserSupport": true
@@ -60,7 +68,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "shorthair-app:build"
+            "browserTarget": "shorthair-app:build",
+            "proxyConfig": "proxy.conf.json"
           },
           "configurations": {
             "production": {

@@ -1,0 +1,30 @@
+<form nz-form>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="fontSize" nzRequired>字体大小</nz-form-label>
+    <div nz-col><input nz-input id="fontSize" *ngIf="node" [(ngModel)]="node.styleTable['font-size']" (keyup)="update($event, 'font-size')" name="fontSize" placeholder="举例：12px" /></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="fontWeight" nzRequired>字体加粗</nz-form-label>
+    <div nz-col><label nz-checkbox id="fontWeight" name="fontWeight" *ngIf="node" [(ngModel)]="node.styleTable['font-weight']">加粗</label></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="color" nzRequired>字体颜色</nz-form-label>
+    <div nz-col><input nz-input id="color" name="color" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['color']" (keyup)="update($event, 'color')" /></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="backgroundColor" nzRequired>边框颜色</nz-form-label>
+    <div nz-col><input nz-input id="backgroundColor" name="backgroundColor" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['background-color']" (keyup)="update($event, 'font-size')" /></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="border - color" nzRequired>边框颜色</nz-form-label>
+    <div nz-col><input nz-input id="borderColor" name="borderColor" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['border-color']" (keyup)="update($event, 'border-color')" /></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="border - width" nzRequired>边框粗细</nz-form-label>
+    <div nz-col><input nz-input id="borderWidth" name="borderwidth" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['border-width']" (keyup)="update($event, 'border-width')" /></div>
+  </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="border - style" nzRequired>边框样式</nz-form-label>
+    <div nz-col><input nz-input id="borderStyle" name="borderStyle" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['border-style']" (keyup)="update($event, 'border-style')" /></div>
+  </nz-form-item>
+</form>
