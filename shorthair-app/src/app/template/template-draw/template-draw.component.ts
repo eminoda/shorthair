@@ -52,13 +52,18 @@ export class TemplateDrawComponent implements OnInit {
       resp => {
         this.template = resp.data;
         this.template.node = JSON.parse(this.template.node);
-        this.currentNode = this.template.node[0].children[0];
+        // this.currentNode = this.template.node[0].children[0];
         // console.log(this.currentNode);
       },
       err => {
         this.message.error(err.message);
       }
     );
+  }
+
+  updateCurrentNode($event: Observable<any>) {
+    this.currentNode = $event;
+    console.log(this.currentNode);
   }
 
   saveTemplate() {
@@ -104,9 +109,5 @@ export class TemplateDrawComponent implements OnInit {
         this.message.error(err.message);
       }
     );
-  }
-
-  updateNode($event: Observable<IStyleTable>) {
-    console.log($event);
   }
 }
