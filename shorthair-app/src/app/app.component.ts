@@ -18,11 +18,6 @@ export class AppComponent {
       icon: 'profile',
       subMenus: [
         {
-          id: 11,
-          name: '域名',
-          url: '/domain/list'
-        },
-        {
           id: 12,
           name: '页面列表',
           url: '/page/list'
@@ -31,6 +26,23 @@ export class AppComponent {
           id: 13,
           name: '模板绘制',
           url: '/template/draw'
+        }
+      ]
+    },
+    {
+      id: 20,
+      name: '系统设置',
+      icon: 'setting',
+      subMenus: [
+        {
+          id: 21,
+          name: '域名管理',
+          url: '/domain/list'
+        },
+        {
+          id: 22,
+          name: '系统路径',
+          url: '/setting/path'
         }
       ]
     }

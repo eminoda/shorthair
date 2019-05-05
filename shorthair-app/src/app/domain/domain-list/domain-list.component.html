@@ -1,8 +1,13 @@
 <div class="operate">
   <button nz-button [nzType]="'primary'" (click)="showDomainCreateModal()">新增</button>
 </div>
-<nz-table [nzData]="list" [nzFrontPagination]="false" [nzPageSize]="pageOption.pageSize" [nzTotal]="pageOption.total"
-  (nzPageIndexChange)="pageChange($event)">
+<nz-table
+  [nzData]="list"
+  [nzFrontPagination]="false"
+  [nzPageSize]="pageOption.pageSize"
+  [nzTotal]="pageOption.total"
+  (nzPageIndexChange)="pageChange($event)"
+>
   <thead>
     <tr>
       <th>序号</th>
@@ -17,7 +22,12 @@
       <td>{{ data.name }}</td>
       <td>{{ data.remark }}</td>
       <td>
-        <button nz-button nzSize="small" (click)="showDomainEditModal(data.id)">修改</button>
+        <nz-button-group>
+          <button nz-button nzSize="small" (click)="showDomainEditModal(data.id)">修改</button>
+          <button nz-button nzSize="small" nzType="danger" (click)="deleteDomainById(data.id)">
+            删除
+          </button>
+        </nz-button-group>
       </td>
     </tr>
   </tbody>

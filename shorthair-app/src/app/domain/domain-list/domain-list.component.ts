@@ -18,25 +18,36 @@ export class DomainListComponent implements OnInit {
     page: 1
   };
 
-  constructor(private DomainService: DomainService, private message: NzMessageService, private modalService: NzModalService) {}
+  constructor(
+    private domainService: DomainService,
+    private message: NzMessageService,
+    private modalService: NzModalService
+  ) {}
 
   ngOnInit() {
     this.queryList();
   }
 
   queryList() {
-    this.DomainService.queryList({
-      page: this.pageOption.page,
-      pageSize: this.pageOption.pageSize
-    }).subscribe(
-      resp => {
-        this.list = resp.data.list;
-        this.pageOption.total = resp.data.total;
-      },
-      err => {
-        this.message.error(err.message);
-      }
-    );
+    this.domainService
+      .queryList({
+        page: this.pageOption.page,
+        pageSize: this.pageOption.pageSize
+      })
+      .subscribe(
+        resp => {
+          this.list = resp.data.list;
+          this.pageOption.total = resp.data.total;
+        },
+        err => {
+          this.message.error(err.message);
+        }
+      );
+  }
+
+  pageChange($event) {
+    this.pageOption.page = $event;
+    this.queryList();
   }
 
   showDomainCreateModal() {
@@ -77,19 +88,15 @@ export class DomainListComponent implements OnInit {
       ]
     });
   }
-  pageChange($event) {
-    this.pageOption.page = $event;
-    this.queryList();
-  }
 
-  deleteById($event: Observable<any>) {
-    $event.subscribe(
+  deleteDomainById(id: string) {
+    this.domainService.deleteItem(id).subscribe(
       resp => {
         this.message.info(resp.resultMsg);
         this.queryList();
       },
       err => {
-        this.message.info(err.message);
+        this.message.error(err.message);
       }
     );
   }

@@ -32,6 +32,13 @@ export class DomainService {
     });
   }
 
+  deleteItem(id: string): Observable<any> {
+    return this.httpService.request({
+      method: 'delete',
+      url: `/api/domains/${id}`
+    });
+  }
+
   createItem(data: Domain): Observable<any> {
     return this.httpService.request({
       method: 'post',
