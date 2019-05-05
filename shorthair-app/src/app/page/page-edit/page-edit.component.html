@@ -3,15 +3,25 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="name" nzRequired>页面名称</nz-form-label>
     <nz-form-control [nzSm]="8" [nzXs]="24">
       <input nz-input id="name" formControlName="name" />
-      <nz-form-explain *ngIf="validateForm.get('name')?.dirty && validateForm.get('name')?.errors">输入不能为空
+      <nz-form-explain *ngIf="validateForm.get('name')?.dirty && validateForm.get('name')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
   <nz-form-item>
-    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="domain" nzRequired>页面地址</nz-form-label>
+    <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="domain" nzRequired>域名</nz-form-label>
     <nz-form-control [nzSm]="8" [nzXs]="24">
-      <input nz-input id="domain" formControlName="domain" />
-      <nz-form-explain *ngIf="validateForm.get('domain')?.dirty && validateForm.get('domain')?.errors">输入不能为空
+      <!-- <input nz-input id="domain" formControlName="domain" /> -->
+      <nz-select id="domain" formControlName="domain" nzPlaceHolder="请选择域名">
+        <nz-option
+          [nzValue]="item.name"
+          [nzLabel]="item.name"
+          *ngFor="let item of domains"
+        ></nz-option>
+      </nz-select>
+      <nz-form-explain
+        *ngIf="validateForm.get('domain')?.dirty && validateForm.get('domain')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -19,7 +29,8 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="path" nzRequired>页面地址</nz-form-label>
     <nz-form-control [nzSm]="8" [nzXs]="24">
       <input nz-input id="path" formControlName="path" />
-      <nz-form-explain *ngIf="validateForm.get('path')?.dirty && validateForm.get('path')?.errors">输入不能为空
+      <nz-form-explain *ngIf="validateForm.get('path')?.dirty && validateForm.get('path')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -27,7 +38,9 @@
     <nz-form-label [nzSm]="6" [nzXs]="24" [nzFor]="templateId" nzRequired>模板Id</nz-form-label>
     <nz-form-control [nzSm]="8" [nzXs]="24">
       <input nz-input id="templateId" formControlName="templateId" />
-      <nz-form-explain *ngIf="validateForm.get('templateId')?.dirty && validateForm.get('templateId')?.errors">输入不能为空
+      <nz-form-explain
+        *ngIf="validateForm.get('templateId')?.dirty && validateForm.get('templateId')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -38,7 +51,9 @@
         <nz-option [nzValue]="1" nzLabel="pc"></nz-option>
         <nz-option [nzValue]="2" nzLabel="h5"></nz-option>
       </nz-select>
-      <nz-form-explain *ngIf="validateForm.get('device')?.dirty && validateForm.get('device')?.errors">输入不能为空
+      <nz-form-explain
+        *ngIf="validateForm.get('device')?.dirty && validateForm.get('device')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
@@ -49,7 +64,9 @@
         <nz-option [nzValue]="true" nzLabel="true"></nz-option>
         <nz-option [nzValue]="false" nzLabel="false"></nz-option>
       </nz-select>
-      <nz-form-explain *ngIf="validateForm.get('deleted')?.dirty && validateForm.get('deleted')?.errors">输入不能为空
+      <nz-form-explain
+        *ngIf="validateForm.get('deleted')?.dirty && validateForm.get('deleted')?.errors"
+        >输入不能为空
       </nz-form-explain>
     </nz-form-control>
   </nz-form-item>
