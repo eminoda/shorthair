@@ -1,12 +1,13 @@
 <form nz-form>
   <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
-    <nz-form-label [nzFor]="fontSize" nzRequired>字体大小</nz-form-label>
-    <div nz-col><input nz-input id="fontSize" *ngIf="node" [(ngModel)]="node.styleTable['font-size']" (keyup)="update($event, 'font-size')" name="fontSize" placeholder="举例：12px" /></div>
-  </nz-form-item>
-  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
     <nz-form-label [nzFor]="fontWeight" nzRequired>字体加粗</nz-form-label>
     <div nz-col><label nz-checkbox id="fontWeight" name="fontWeight" *ngIf="node" [(ngModel)]="node.styleTable['font-weight']">加粗</label></div>
   </nz-form-item>
+  <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
+    <nz-form-label [nzFor]="fontSize" nzRequired>字体大小</nz-form-label>
+    <div nz-col><input nz-input id="fontSize" *ngIf="node" [(ngModel)]="node.styleTable['font-size']" (keyup)="update($event, 'font-size')" name="fontSize" placeholder="举例：12px" /></div>
+  </nz-form-item>
+
   <nz-form-item nzType="flex" nzJustify="start" nzAlign="middle">
     <nz-form-label [nzFor]="color" nzRequired>字体颜色</nz-form-label>
     <div nz-col><input nz-input id="color" name="color" placeholder="举例：12px" *ngIf="node" [(ngModel)]="node.styleTable['color']" (keyup)="update($event, 'color')" /></div>

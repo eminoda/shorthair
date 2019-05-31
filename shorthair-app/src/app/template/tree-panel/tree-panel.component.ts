@@ -7,28 +7,8 @@ import { NzTreeNodeOptions, NzFormatEmitEvent, NzTreeNode, NzTreeComponent } fro
   styleUrls: ['./tree-panel.component.scss']
 })
 export class TreePanelComponent implements OnInit, OnChanges {
-  @Input() node: any;
+  @Input() treeNode: any;
   @Output() updateNodeEvent = new EventEmitter<StyleTable>();
-
-  // nodes: NzTreeNodeOptions[] = [
-  //   {
-  //     title: 'parent 1',
-  //     key: '100',
-  //     children: [
-  //       {
-  //         title: 'parent 1-0',
-  //         key: '1001',
-  //         disabled: true,
-  //         children: [{ title: 'leaf 1-0-0', key: '10010', disableCheckbox: true, isLeaf: true }, { title: 'leaf 1-0-1', key: '10011', isLeaf: true }]
-  //       },
-  //       {
-  //         title: 'parent 1-1',
-  //         key: '1002',
-  //         children: [{ title: 'leaf 1-1-0', key: '10020', isLeaf: true }, { title: 'leaf 1-1-1', key: '10021', isLeaf: true }]
-  //       }
-  //     ]
-  //   }
-  // ];
   @ViewChild('nzTreeComponent') nzTreeComponent: NzTreeComponent;
   nodes: NzTreeNodeOptions[] = [
     {
@@ -44,21 +24,26 @@ export class TreePanelComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    if (this.node) {
+    if (this.treeNode) {
       let parentNode = this.nzTreeComponent.getTreeNodeByKey('001');
-      this.appendNode(this.node, parentNode);
+      this.appendNode(this.treeNode, parentNode);
     }
   }
 
   private appendNode(nodes, parentNode: NzTreeNode) {
     if (nodes && nodes.length > 0) {
       let childrenNode = [];
-      for (let node of nodes) {
-        let key = String(Math.round(Math.random() * 1000));
+
+      let key = String(Math.round(Math.random() * 1000));
+      for (let i = 0; i < nodes.length; i++) {
+        let node = nodes[i];
+        node.id = key;
         let title = key + ':' + node.tag + ':' + node.className;
+        let currentNode = node;
         childrenNode.push({
           title,
-          key
+          key,
+          currentNode
         });
       }
       parentNode.addChildren(childrenNode);
@@ -69,8 +54,7 @@ export class TreePanelComponent implements OnInit, OnChanges {
     }
   }
 
-  nzClick(event: NzFormatEmitEvent): void {}
-  update($event, key) {
-    this.node && this.updateNodeEvent.emit(this.node.styleTable);
+  nzClick(event: NzFormatEmitEvent): void {
+    this.updateNodeEvent.emit(event.node.origin.currentNode);
   }
 }

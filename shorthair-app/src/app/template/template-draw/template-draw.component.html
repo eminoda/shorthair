@@ -2,13 +2,15 @@
   <div nz-col nzSpan="12">
     <nz-tabset [nzTabPosition]="'top'" [nzType]="'card'">
       <nz-tab *ngFor="let tab of tabs" [nzTitle]="tab.title">
-        <app-tree-panel *ngIf="tab.id == 1" (updateNodeEvent)="updateNode($event)" [node]="template.node"></app-tree-panel>
-        <app-surface-panel *ngIf="tab.id == 3" [node]="currentNode" (updateNodeEvent)="updateNode($event)"></app-surface-panel>
+        <app-tree-panel *ngIf="tab.id == 1" [treeNode]="template.node" (updateNodeEvent)="updateCurrentNode($event)"></app-tree-panel>
+        <app-surface-panel *ngIf="tab.id == 3" [node]="currentNode" (updateNodeEvent)="updateCurrentNode($event)"></app-surface-panel>
         <app-position-panel *ngIf="tab.id == 2"></app-position-panel>
         <app-event-panel *ngIf="tab.id == 4"></app-event-panel>
       </nz-tab>
     </nz-tabset>
     <button (click)="saveTemplate()">保存</button>
   </div>
-  <div nz-col nzSpan="12">2</div>
+  <div nz-col nzSpan="12">
+    <app-template-preview [treeNode]="template.node"></app-template-preview>
+  </div>
 </div>
